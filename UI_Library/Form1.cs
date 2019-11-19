@@ -16,5 +16,11 @@ namespace UI_Library
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            createObject createObject = new createObject();
+            createObject.Show();
+        }
     }
 }
