@@ -8,3 +8,13 @@ C:\Users\User\Desktop\Simu3Delta\UI_Library\obj\Debug\UI_Library.csproj.Generate
 C:\Users\User\Desktop\Simu3Delta\UI_Library\obj\Debug\UI_Library.exe
 C:\Users\User\Desktop\Simu3Delta\UI_Library\obj\Debug\UI_Library.pdb
 C:\Users\User\Desktop\Simu3Delta\UI_Library\obj\Debug\UI_Library.createObject.resources
+C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\UI_Library\bin\Debug\UI_Library.exe.config
+C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\UI_Library\bin\Debug\UI_Library.exe
+C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\UI_Library\bin\Debug\UI_Library.pdb
+C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\UI_Library\obj\Debug\UI_Library.csprojAssemblyReference.cache
+C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\UI_Library\obj\Debug\UI_Library.createObject.resources
+C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\UI_Library\obj\Debug\UI_Library.Form1.resources
+C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\UI_Library\obj\Debug\UI_Library.Properties.Resources.resources
+C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\UI_Library\obj\Debug\UI_Library.csproj.GenerateResource.cache
+C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\UI_Library\obj\Debug\UI_Library.exe
+C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\UI_Library\obj\Debug\UI_Library.pdb

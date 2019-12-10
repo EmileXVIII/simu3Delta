@@ -22,5 +22,10 @@ namespace UI_Library
             createObject createObject = new createObject();
             createObject.Show();
         }
+
+        private void objetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.button1_Click(sender, e);
+        }
     }
 }

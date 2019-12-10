@@ -1,0 +1,8 @@
+C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\Simu3Delta\Simu3Delta\bin\Debug\Simu3Delta.exe.config
+C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\Simu3Delta\Simu3Delta\bin\Debug\Simu3Delta.exe
+C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\Simu3Delta\Simu3Delta\bin\Debug\Simu3Delta.pdb
+C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\Simu3Delta\Simu3Delta\obj\Debug\Simu3Delta.csprojAssemblyReference.cache
+C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\Simu3Delta\Simu3Delta\obj\Debug\Simu3Delta.Properties.Resources.resources
+C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\Simu3Delta\Simu3Delta\obj\Debug\Simu3Delta.csproj.GenerateResource.cache
+C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\Simu3Delta\Simu3Delta\obj\Debug\Simu3Delta.exe
+C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\Simu3Delta\Simu3Delta\obj\Debug\Simu3Delta.pdb

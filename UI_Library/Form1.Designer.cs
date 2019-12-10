@@ -48,6 +48,8 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fichierToolStripMenuItem,
             this.editionToolStripMenuItem,
@@ -56,7 +58,7 @@
             this.runToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1200, 35);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -66,7 +68,7 @@
             this.nouveauToolStripMenuItem,
             this.ouvrirToolStripMenuItem});
             this.fichierToolStripMenuItem.Name = "fichierToolStripMenuItem";
-            this.fichierToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
+            this.fichierToolStripMenuItem.Size = new System.Drawing.Size(78, 29);
             this.fichierToolStripMenuItem.Text = "Fichier";
             // 
             // nouveauToolStripMenuItem
@@ -75,19 +77,20 @@
             this.objetToolStripMenuItem,
             this.simulationToolStripMenuItem});
             this.nouveauToolStripMenuItem.Name = "nouveauToolStripMenuItem";
-            this.nouveauToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.nouveauToolStripMenuItem.Size = new System.Drawing.Size(185, 34);
             this.nouveauToolStripMenuItem.Text = "Nouveau";
             // 
             // objetToolStripMenuItem
             // 
             this.objetToolStripMenuItem.Name = "objetToolStripMenuItem";
-            this.objetToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.objetToolStripMenuItem.Size = new System.Drawing.Size(198, 34);
             this.objetToolStripMenuItem.Text = "Objet";
+            this.objetToolStripMenuItem.Click += new System.EventHandler(this.objetToolStripMenuItem_Click);
             // 
             // simulationToolStripMenuItem
             // 
             this.simulationToolStripMenuItem.Name = "simulationToolStripMenuItem";
-            this.simulationToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.simulationToolStripMenuItem.Size = new System.Drawing.Size(198, 34);
             this.simulationToolStripMenuItem.Text = "Simulation";
             // 
             // ouvrirToolStripMenuItem
@@ -96,37 +99,37 @@
             this.objetToolStripMenuItem1,
             this.simulationToolStripMenuItem1});
             this.ouvrirToolStripMenuItem.Name = "ouvrirToolStripMenuItem";
-            this.ouvrirToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.ouvrirToolStripMenuItem.Size = new System.Drawing.Size(185, 34);
             this.ouvrirToolStripMenuItem.Text = "Ouvrir";
             // 
             // objetToolStripMenuItem1
             // 
             this.objetToolStripMenuItem1.Name = "objetToolStripMenuItem1";
-            this.objetToolStripMenuItem1.Size = new System.Drawing.Size(131, 22);
+            this.objetToolStripMenuItem1.Size = new System.Drawing.Size(198, 34);
             this.objetToolStripMenuItem1.Text = "Objet";
             // 
             // simulationToolStripMenuItem1
             // 
             this.simulationToolStripMenuItem1.Name = "simulationToolStripMenuItem1";
-            this.simulationToolStripMenuItem1.Size = new System.Drawing.Size(131, 22);
+            this.simulationToolStripMenuItem1.Size = new System.Drawing.Size(198, 34);
             this.simulationToolStripMenuItem1.Text = "Simulation";
             // 
             // editionToolStripMenuItem
             // 
             this.editionToolStripMenuItem.Name = "editionToolStripMenuItem";
-            this.editionToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+            this.editionToolStripMenuItem.Size = new System.Drawing.Size(83, 29);
             this.editionToolStripMenuItem.Text = "Edition";
             // 
             // affichageToolStripMenuItem
             // 
             this.affichageToolStripMenuItem.Name = "affichageToolStripMenuItem";
-            this.affichageToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
+            this.affichageToolStripMenuItem.Size = new System.Drawing.Size(103, 29);
             this.affichageToolStripMenuItem.Text = "Affichage";
             // 
             // projetToolStripMenuItem
             // 
             this.projetToolStripMenuItem.Name = "projetToolStripMenuItem";
-            this.projetToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.projetToolStripMenuItem.Size = new System.Drawing.Size(74, 29);
             this.projetToolStripMenuItem.Text = "Projet";
             // 
             // runToolStripMenuItem
@@ -134,20 +137,21 @@
             this.runToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.simulationToolStripMenuItem2});
             this.runToolStripMenuItem.Name = "runToolStripMenuItem";
-            this.runToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
+            this.runToolStripMenuItem.Size = new System.Drawing.Size(59, 29);
             this.runToolStripMenuItem.Text = "Run";
             // 
             // simulationToolStripMenuItem2
             // 
             this.simulationToolStripMenuItem2.Name = "simulationToolStripMenuItem2";
-            this.simulationToolStripMenuItem2.Size = new System.Drawing.Size(131, 22);
+            this.simulationToolStripMenuItem2.Size = new System.Drawing.Size(198, 34);
             this.simulationToolStripMenuItem2.Text = "Simulation";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(258, 231);
+            this.button1.Location = new System.Drawing.Point(252, 291);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(283, 108);
+            this.button1.Size = new System.Drawing.Size(424, 166);
             this.button1.TabIndex = 1;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
@@ -156,21 +160,28 @@
             // but
             // 
             this.but.AutoSize = true;
-            this.but.Location = new System.Drawing.Point(378, 175);
+            this.but.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.but.Location = new System.Drawing.Point(0, 50);
+            this.but.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.but.Name = "but";
-            this.but.Size = new System.Drawing.Size(35, 13);
+            this.but.Size = new System.Drawing.Size(892, 87);
             this.but.TabIndex = 2;
-            this.but.Text = "label1";
+            this.but.Text = "Bienvenue sur simu3Delta. \nCe projet a pour but la simulation 2D des deformations" +
+    " dues à un choc. \nPour commencer utiliser le bouton test ci-dessous ou faites Fi" +
+    "chier/Nouveau/Objet";
+            this.but.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1200, 692);
             this.Controls.Add(this.but);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form1";
             this.Text = "Form1";
             this.menuStrip1.ResumeLayout(false);
