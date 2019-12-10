@@ -27,5 +27,23 @@ namespace UI_Library
         {
             this.button1_Click(sender, e);
         }
+
+        private void objetToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            AlertOpen alertOpen = new AlertOpen();
+            alertOpen.Show();
+        }
+
+        private void simulationToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            AlertOpen alertOpen = new AlertOpen();
+            alertOpen.Show();
+        }
+
+        private void simulationToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            Chargement chargement = new Chargement();
+            chargement.Show();
+        }
     }
 }

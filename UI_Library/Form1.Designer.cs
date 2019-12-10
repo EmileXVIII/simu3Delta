@@ -58,7 +58,7 @@
             this.runToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1200, 35);
+            this.menuStrip1.Size = new System.Drawing.Size(1200, 33);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -99,20 +99,22 @@
             this.objetToolStripMenuItem1,
             this.simulationToolStripMenuItem1});
             this.ouvrirToolStripMenuItem.Name = "ouvrirToolStripMenuItem";
-            this.ouvrirToolStripMenuItem.Size = new System.Drawing.Size(185, 34);
+            this.ouvrirToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.ouvrirToolStripMenuItem.Text = "Ouvrir";
             // 
             // objetToolStripMenuItem1
             // 
             this.objetToolStripMenuItem1.Name = "objetToolStripMenuItem1";
-            this.objetToolStripMenuItem1.Size = new System.Drawing.Size(198, 34);
+            this.objetToolStripMenuItem1.Size = new System.Drawing.Size(270, 34);
             this.objetToolStripMenuItem1.Text = "Objet";
+            this.objetToolStripMenuItem1.Click += new System.EventHandler(this.objetToolStripMenuItem1_Click);
             // 
             // simulationToolStripMenuItem1
             // 
             this.simulationToolStripMenuItem1.Name = "simulationToolStripMenuItem1";
-            this.simulationToolStripMenuItem1.Size = new System.Drawing.Size(198, 34);
+            this.simulationToolStripMenuItem1.Size = new System.Drawing.Size(270, 34);
             this.simulationToolStripMenuItem1.Text = "Simulation";
+            this.simulationToolStripMenuItem1.Click += new System.EventHandler(this.simulationToolStripMenuItem1_Click);
             // 
             // editionToolStripMenuItem
             // 
@@ -143,8 +145,9 @@
             // simulationToolStripMenuItem2
             // 
             this.simulationToolStripMenuItem2.Name = "simulationToolStripMenuItem2";
-            this.simulationToolStripMenuItem2.Size = new System.Drawing.Size(198, 34);
+            this.simulationToolStripMenuItem2.Size = new System.Drawing.Size(270, 34);
             this.simulationToolStripMenuItem2.Text = "Simulation";
+            this.simulationToolStripMenuItem2.Click += new System.EventHandler(this.simulationToolStripMenuItem2_Click);
             // 
             // button1
             // 

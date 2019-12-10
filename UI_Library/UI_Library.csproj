@@ -58,13 +58,31 @@
     <Compile Include="createObject.Designer.cs">
       <DependentUpon>createObject.cs</DependentUpon>
     </Compile>
+    <Compile Include="AlertOpen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AlertOpen.Designer.cs">
+      <DependentUpon>AlertOpen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Chargement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Chargement.Designer.cs">
+      <DependentUpon>Chargement.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Chargement.resx">
+      <DependentUpon>Chargement.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="createObject.resx">
       <DependentUpon>createObject.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AlertOpen.resx">
+      <DependentUpon>AlertOpen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

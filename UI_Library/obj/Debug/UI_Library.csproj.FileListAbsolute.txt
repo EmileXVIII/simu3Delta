@@ -18,3 +18,5 @@ C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\UI_Library\obj\Debug\UI_Library.Pro
 C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\UI_Library\obj\Debug\UI_Library.csproj.GenerateResource.cache
 C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\UI_Library\obj\Debug\UI_Library.exe
 C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\UI_Library\obj\Debug\UI_Library.pdb
+C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\UI_Library\obj\Debug\UI_Library.AlertOpen.resources
+C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\UI_Library\obj\Debug\UI_Library.Chargement.resources
