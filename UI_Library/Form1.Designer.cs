@@ -28,93 +28,93 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fichierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.nouveauToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.objetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.simulationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ouvrirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.objetToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.simulationToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.barMenuStrip = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.subfileNewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.subfileSubnewObjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.subfileSubnewSimulationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.subfileOpenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.subfileSubopenObjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.subfileSubopenSimulationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.affichageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.projetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.runToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.simulationToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.button1 = new System.Windows.Forms.Button();
+            this.subrunSimulationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buttonTest = new System.Windows.Forms.Button();
             this.but = new System.Windows.Forms.Label();
-            this.menuStrip1.SuspendLayout();
+            this.barMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
-            // menuStrip1
+            // barMenuStrip
             // 
-            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fichierToolStripMenuItem,
+            this.barMenuStrip.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
+            this.barMenuStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.barMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
             this.editionToolStripMenuItem,
             this.affichageToolStripMenuItem,
             this.projetToolStripMenuItem,
             this.runToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1200, 33);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
+            this.barMenuStrip.Location = new System.Drawing.Point(0, 0);
+            this.barMenuStrip.Name = "barMenuStrip";
+            this.barMenuStrip.Size = new System.Drawing.Size(916, 33);
+            this.barMenuStrip.TabIndex = 0;
+            this.barMenuStrip.Text = "barMenuStrip";
             // 
-            // fichierToolStripMenuItem
+            // fileToolStripMenuItem
             // 
-            this.fichierToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.nouveauToolStripMenuItem,
-            this.ouvrirToolStripMenuItem});
-            this.fichierToolStripMenuItem.Name = "fichierToolStripMenuItem";
-            this.fichierToolStripMenuItem.Size = new System.Drawing.Size(78, 29);
-            this.fichierToolStripMenuItem.Text = "Fichier";
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.subfileNewToolStripMenuItem,
+            this.subfileOpenToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(54, 29);
+            this.fileToolStripMenuItem.Text = "File";
             // 
-            // nouveauToolStripMenuItem
+            // subfileNewToolStripMenuItem
             // 
-            this.nouveauToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.objetToolStripMenuItem,
-            this.simulationToolStripMenuItem});
-            this.nouveauToolStripMenuItem.Name = "nouveauToolStripMenuItem";
-            this.nouveauToolStripMenuItem.Size = new System.Drawing.Size(185, 34);
-            this.nouveauToolStripMenuItem.Text = "Nouveau";
+            this.subfileNewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.subfileSubnewObjectToolStripMenuItem,
+            this.subfileSubnewSimulationToolStripMenuItem});
+            this.subfileNewToolStripMenuItem.Name = "subfileNewToolStripMenuItem";
+            this.subfileNewToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.subfileNewToolStripMenuItem.Text = "New";
             // 
-            // objetToolStripMenuItem
+            // subfileSubnewObjectToolStripMenuItem
             // 
-            this.objetToolStripMenuItem.Name = "objetToolStripMenuItem";
-            this.objetToolStripMenuItem.Size = new System.Drawing.Size(198, 34);
-            this.objetToolStripMenuItem.Text = "Objet";
-            this.objetToolStripMenuItem.Click += new System.EventHandler(this.objetToolStripMenuItem_Click);
+            this.subfileSubnewObjectToolStripMenuItem.Name = "subfileSubnewObjectToolStripMenuItem";
+            this.subfileSubnewObjectToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.subfileSubnewObjectToolStripMenuItem.Text = "Object";
+            this.subfileSubnewObjectToolStripMenuItem.Click += new System.EventHandler(this.subfileSubnewObjectToolStripMenuItem_Click);
             // 
-            // simulationToolStripMenuItem
+            // subfileSubnewSimulationToolStripMenuItem
             // 
-            this.simulationToolStripMenuItem.Name = "simulationToolStripMenuItem";
-            this.simulationToolStripMenuItem.Size = new System.Drawing.Size(198, 34);
-            this.simulationToolStripMenuItem.Text = "Simulation";
+            this.subfileSubnewSimulationToolStripMenuItem.Name = "subfileSubnewSimulationToolStripMenuItem";
+            this.subfileSubnewSimulationToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.subfileSubnewSimulationToolStripMenuItem.Text = "Simulation";
             // 
-            // ouvrirToolStripMenuItem
+            // subfileOpenToolStripMenuItem
             // 
-            this.ouvrirToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.objetToolStripMenuItem1,
-            this.simulationToolStripMenuItem1});
-            this.ouvrirToolStripMenuItem.Name = "ouvrirToolStripMenuItem";
-            this.ouvrirToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
-            this.ouvrirToolStripMenuItem.Text = "Ouvrir";
+            this.subfileOpenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.subfileSubopenObjectToolStripMenuItem,
+            this.subfileSubopenSimulationToolStripMenuItem});
+            this.subfileOpenToolStripMenuItem.Name = "subfileOpenToolStripMenuItem";
+            this.subfileOpenToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.subfileOpenToolStripMenuItem.Text = "Open";
             // 
-            // objetToolStripMenuItem1
+            // subfileSubopenObjectToolStripMenuItem
             // 
-            this.objetToolStripMenuItem1.Name = "objetToolStripMenuItem1";
-            this.objetToolStripMenuItem1.Size = new System.Drawing.Size(270, 34);
-            this.objetToolStripMenuItem1.Text = "Objet";
-            this.objetToolStripMenuItem1.Click += new System.EventHandler(this.objetToolStripMenuItem1_Click);
+            this.subfileSubopenObjectToolStripMenuItem.Name = "subfileSubopenObjectToolStripMenuItem";
+            this.subfileSubopenObjectToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.subfileSubopenObjectToolStripMenuItem.Text = "Object";
+            this.subfileSubopenObjectToolStripMenuItem.Click += new System.EventHandler(this.subfileSubopenObjectToolStripMenuItem_Click);
             // 
-            // simulationToolStripMenuItem1
+            // subfileSubopenSimulationToolStripMenuItem
             // 
-            this.simulationToolStripMenuItem1.Name = "simulationToolStripMenuItem1";
-            this.simulationToolStripMenuItem1.Size = new System.Drawing.Size(270, 34);
-            this.simulationToolStripMenuItem1.Text = "Simulation";
-            this.simulationToolStripMenuItem1.Click += new System.EventHandler(this.simulationToolStripMenuItem1_Click);
+            this.subfileSubopenSimulationToolStripMenuItem.Name = "subfileSubopenSimulationToolStripMenuItem";
+            this.subfileSubopenSimulationToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.subfileSubopenSimulationToolStripMenuItem.Text = "Simulation";
+            this.subfileSubopenSimulationToolStripMenuItem.Click += new System.EventHandler(this.subfileSubopenSimulationToolStripMenuItem_Click);
             // 
             // editionToolStripMenuItem
             // 
@@ -137,28 +137,28 @@
             // runToolStripMenuItem
             // 
             this.runToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.simulationToolStripMenuItem2});
+            this.subrunSimulationToolStripMenuItem});
             this.runToolStripMenuItem.Name = "runToolStripMenuItem";
             this.runToolStripMenuItem.Size = new System.Drawing.Size(59, 29);
             this.runToolStripMenuItem.Text = "Run";
             // 
-            // simulationToolStripMenuItem2
+            // subrunSimulationToolStripMenuItem
             // 
-            this.simulationToolStripMenuItem2.Name = "simulationToolStripMenuItem2";
-            this.simulationToolStripMenuItem2.Size = new System.Drawing.Size(270, 34);
-            this.simulationToolStripMenuItem2.Text = "Simulation";
-            this.simulationToolStripMenuItem2.Click += new System.EventHandler(this.simulationToolStripMenuItem2_Click);
+            this.subrunSimulationToolStripMenuItem.Name = "subrunSimulationToolStripMenuItem";
+            this.subrunSimulationToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.subrunSimulationToolStripMenuItem.Text = "Simulation";
+            this.subrunSimulationToolStripMenuItem.Click += new System.EventHandler(this.subrunSimulationToolStripMenuItem_Click);
             // 
-            // button1
+            // buttonTest
             // 
-            this.button1.Location = new System.Drawing.Point(252, 291);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(424, 166);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonTest.Location = new System.Drawing.Point(222, 283);
+            this.buttonTest.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.buttonTest.Name = "buttonTest";
+            this.buttonTest.Size = new System.Drawing.Size(424, 166);
+            this.buttonTest.TabIndex = 1;
+            this.buttonTest.Text = "buttonTest";
+            this.buttonTest.UseVisualStyleBackColor = true;
+            this.buttonTest.Click += new System.EventHandler(this.buttonTest_Click);
             // 
             // but
             // 
@@ -178,17 +178,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1200, 692);
+            this.ClientSize = new System.Drawing.Size(916, 692);
             this.Controls.Add(this.but);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.buttonTest);
+            this.Controls.Add(this.barMenuStrip);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MainMenuStrip = this.menuStrip1;
+            this.MainMenuStrip = this.barMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.barMenuStrip.ResumeLayout(false);
+            this.barMenuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -196,21 +196,21 @@
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem fichierToolStripMenuItem;
+        private System.Windows.Forms.MenuStrip barMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem affichageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem projetToolStripMenuItem;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonTest;
         private System.Windows.Forms.Label but;
-        private System.Windows.Forms.ToolStripMenuItem nouveauToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem objetToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem simulationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ouvrirToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem objetToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem simulationToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem subfileNewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem subfileSubnewObjectToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem subfileSubnewSimulationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem subfileOpenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem subfileSubopenObjectToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem subfileSubopenSimulationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem runToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem simulationToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem subrunSimulationToolStripMenuItem;
     }
 }
 

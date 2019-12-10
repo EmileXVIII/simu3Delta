@@ -17,30 +17,30 @@ namespace UI_Library
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonTest_Click(object sender, EventArgs e)
         {
             createObject createObject = new createObject();
             createObject.Show();
         }
 
-        private void objetToolStripMenuItem_Click(object sender, EventArgs e)
+        private void subfileSubnewObjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.button1_Click(sender, e);
+            this.buttonTest_Click(sender, e);
         }
 
-        private void objetToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            AlertOpen alertOpen = new AlertOpen();
-            alertOpen.Show();
-        }
-
-        private void simulationToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void subfileSubopenObjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AlertOpen alertOpen = new AlertOpen();
             alertOpen.Show();
         }
 
-        private void simulationToolStripMenuItem2_Click(object sender, EventArgs e)
+        private void subfileSubopenSimulationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AlertOpen alertOpen = new AlertOpen();
+            alertOpen.Show();
+        }
+
+        private void subrunSimulationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Chargement chargement = new Chargement();
             chargement.Show();

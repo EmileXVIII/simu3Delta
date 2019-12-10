@@ -31,9 +31,9 @@
             this.pctBoxCreate = new System.Windows.Forms.PictureBox();
             this.butForm = new System.Windows.Forms.Button();
             this.fichierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.subfileNewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.objectToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.simulationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.subfileSubnewSimulationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -93,7 +93,7 @@
             // fichierToolStripMenuItem
             // 
             this.fichierToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newToolStripMenuItem,
+            this.subfileNewToolStripMenuItem,
             this.openToolStripMenuItem,
             this.addToolStripMenuItem,
             this.closeToolStripMenuItem});
@@ -101,14 +101,14 @@
             this.fichierToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fichierToolStripMenuItem.Text = "File";
             // 
-            // newToolStripMenuItem
+            // subfileNewToolStripMenuItem
             // 
-            this.newToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.subfileNewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.objectToolStripMenuItem1,
-            this.simulationToolStripMenuItem});
-            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
-            this.newToolStripMenuItem.Text = "New";
+            this.subfileSubnewSimulationToolStripMenuItem});
+            this.subfileNewToolStripMenuItem.Name = "subfileNewToolStripMenuItem";
+            this.subfileNewToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.subfileNewToolStripMenuItem.Text = "New";
             // 
             // objectToolStripMenuItem1
             // 
@@ -116,11 +116,11 @@
             this.objectToolStripMenuItem1.Size = new System.Drawing.Size(131, 22);
             this.objectToolStripMenuItem1.Text = "Object";
             // 
-            // simulationToolStripMenuItem
+            // subfileSubnewSimulationToolStripMenuItem
             // 
-            this.simulationToolStripMenuItem.Name = "simulationToolStripMenuItem";
-            this.simulationToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
-            this.simulationToolStripMenuItem.Text = "Simulation";
+            this.subfileSubnewSimulationToolStripMenuItem.Name = "subfileSubnewSimulationToolStripMenuItem";
+            this.subfileSubnewSimulationToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.subfileSubnewSimulationToolStripMenuItem.Text = "Simulation";
             // 
             // openToolStripMenuItem
             // 
@@ -428,9 +428,9 @@
         private System.Windows.Forms.PictureBox pctBoxCreate;
         private System.Windows.Forms.Button butForm;
         private System.Windows.Forms.ToolStripMenuItem fichierToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem subfileNewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem objectToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem simulationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem subfileSubnewSimulationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
