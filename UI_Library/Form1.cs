@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UI_Library.Code.GestionImage;
 
 namespace UI_Library
 {
@@ -19,6 +20,7 @@ namespace UI_Library
 
         private void buttonTest_Click(object sender, EventArgs e)
         {
+            new PictureFromScatterPlot().Convert(50,50);
             createObject createObject = new createObject();
             createObject.Show();
         }

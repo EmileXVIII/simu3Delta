@@ -49,6 +49,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Code\GestionImage\CouplePtSort.cs" />
+    <Compile Include="Code\GestionImage\Point.cs" />
+    <Compile Include="Code\GestionImage\FtcLine.cs" />
+    <Compile Include="Code\GestionImage\PtUpAndDown.cs" />
+    <Compile Include="Code\GestionImage\Figure.cs" />
     <Compile Include="Code\GestionImage\PictureFromScatterPlot.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
