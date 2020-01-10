@@ -3,6 +3,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using UI_Library.Code.Operations;
 
 namespace UI_Library.Code.GestionImage
 {
@@ -32,6 +33,7 @@ namespace UI_Library.Code.GestionImage
                     myBitmap.SetPixel(abscisse, ordonnee, colorPixel);
                 }
             }
+            myBitmap.Save(@"C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\myImg.png");
             return myBitmap;
         }
         public bool isIn(int X, int Y)
@@ -44,30 +46,37 @@ namespace UI_Library.Code.GestionImage
             int iUp = minInd;
             int iDown = minInd;
             PtUpAndDown myCouplesUpAndDown = new PtUpAndDown( this.myFigure, minInd);
-                while (myCouplesUpAndDown.getUp().max().X < X && iUp < this.myFigure.Count)
-                {
-                    iUp -= myCouplesUpAndDown.downIncrement ? +1 : -1;
-                    myCouplesUpAndDown.setUp(iUp);
-                }
-                if (iUp >= this.myFigure.Count) { return false; }
-                FtcLine myftcUp = new FtcLine(myCouplesUpAndDown.getUp().max(), myCouplesUpAndDown.getUp().min());
-                if (myftcUp.calcY(X) < Y)
-                {
-                    return false;
-                }
-
-                while (myCouplesUpAndDown.getDown().max().X < X && iDown < this.myFigure.Count)
-                {
-                    iDown += myCouplesUpAndDown.downIncrement ? +1 : -1;
-                    myCouplesUpAndDown.setDown(iDown);
-                }
-                if (iUp >= this.myFigure.Count) { return false; }
-                FtcLine myftcDown = new FtcLine(myCouplesUpAndDown.getDown().max(), myCouplesUpAndDown.getDown().min());
-                if (myftcDown.calcY(X) > Y)
-                {
-                    return false;
-                }
-                return true;
+            int nbBoucles = 0;
+            while (myCouplesUpAndDown.getUp().max().X < X && nbBoucles++ < this.myFigure.Count)
+            {
+                iUp -= myCouplesUpAndDown.downIncrement ? +1 : -1;
+                iUp = Modulo.posModulo(iUp, this.myFigure.Count);
+                myCouplesUpAndDown.setUp(iUp);
+            }
+            if (nbBoucles >= this.myFigure.Count) { return false; }
+            if (X == -1 && Y == -1)
+            {
+                int rrr = 0;
+            }
+            FtcLine myftcUp = new FtcLine(myCouplesUpAndDown.getUp().max(), myCouplesUpAndDown.getUp().min());
+            if (myftcUp.calcY(X) < Y)
+            {
+                return false;
+            }
+            nbBoucles = 0;
+            while (myCouplesUpAndDown.getDown().max().X < X && nbBoucles++ < this.myFigure.Count)
+            {
+                iDown += myCouplesUpAndDown.downIncrement ? +1 : -1;
+                iDown = Modulo.posModulo(iDown, this.myFigure.Count);
+                myCouplesUpAndDown.setDown(iDown);
+            }
+            if (nbBoucles >= this.myFigure.Count) { return false; }
+            FtcLine myftcDown = new FtcLine(myCouplesUpAndDown.getDown().max(), myCouplesUpAndDown.getDown().min());
+            if (myftcDown.calcY(X) > Y)
+            {
+                return false;
+            }
+            return true;
         }
     }
 

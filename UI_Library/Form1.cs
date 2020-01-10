@@ -20,7 +20,7 @@ namespace UI_Library
 
         private void buttonTest_Click(object sender, EventArgs e)
         {
-            new PictureFromScatterPlot().Convert(50,50);
+            new PictureFromScatterPlot().Convert(5000,5000);
             createObject createObject = new createObject();
             createObject.Show();
         }

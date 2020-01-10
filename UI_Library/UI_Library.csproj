@@ -55,6 +55,7 @@
     <Compile Include="Code\GestionImage\PtUpAndDown.cs" />
     <Compile Include="Code\GestionImage\Figure.cs" />
     <Compile Include="Code\GestionImage\PictureFromScatterPlot.cs" />
+    <Compile Include="Code\Operations\Modulo.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

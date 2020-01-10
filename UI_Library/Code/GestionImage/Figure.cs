@@ -36,6 +36,15 @@ namespace UI_Library.Code.GestionImage
                 line = file.ReadLine();
             }
             file.Close();
+            float X = this[0].X;
+            int i = 0;
+            bool isAverticalLigne = true;
+            while (isAverticalLigne && i<this.Count)
+            {
+                if (this[i].X != X) isAverticalLigne = false;
+                i++;
+            }
+            if (isAverticalLigne) throw new ArgumentException("Vertical lines as object are not supported");
         }
     }
 }
