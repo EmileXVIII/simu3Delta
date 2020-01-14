@@ -22,3 +22,6 @@ C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\UI_Library\obj\Debug\UI_Library.Ale
 C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\UI_Library\obj\Debug\UI_Library.Chargement.resources
 C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\UI_Library\bin\Debug\System.Drawing.Common.dll
 C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\UI_Library\obj\Debug\UI_Library.csproj.CopyComplete
+C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\UI_Library\bin\Debug\OpenTK.dll
+C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\UI_Library\bin\Debug\OpenTK.pdb
+C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\UI_Library\bin\Debug\OpenTK.xml

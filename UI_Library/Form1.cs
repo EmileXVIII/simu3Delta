@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UI_Library.Code.GestionImage;
+using UI_Library.Code.OpenGl.GestionImage;
 
 namespace UI_Library
 {
