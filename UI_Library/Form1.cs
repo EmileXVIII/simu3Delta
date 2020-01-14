@@ -27,7 +27,8 @@ namespace UI_Library
 
         private void subfileSubnewObjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.buttonTest_Click(sender, e);
+            createObject createObject = new createObject();
+            createObject.Show();
         }
 
         private void subfileSubopenObjectToolStripMenuItem_Click(object sender, EventArgs e)
