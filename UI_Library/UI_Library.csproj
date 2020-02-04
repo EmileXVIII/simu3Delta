@@ -58,6 +58,15 @@
     <Compile Include="Code\Bitmap.GestionImage\PtUpAndDown.cs" />
     <Compile Include="Code\Bitmap.GestionImage\Figure.cs" />
     <Compile Include="Code\Bitmap.GestionImage\PictureFromScatterPlot.cs" />
+    <Compile Include="Code\CrashObject\CrashObject.cs" />
+    <Compile Include="Code\Exceptions\Class1.cs" />
+    <Compile Include="Code\Objects\Twist.cs" />
+    <Compile Include="Code\Objects\Wrench.cs" />
+    <Compile Include="Code\Objects\Screw.cs" />
+    <Compile Include="Code\Objects\FloatVector.cs" />
+    <Compile Include="Code\Objects\IVector.cs" />
+    <Compile Include="Code\Objects\Vector.cs" />
+    <Compile Include="Code\Exceptions\DimensionException.cs" />
     <Compile Include="Code\OpenGl.GestionImage\Test.cs" />
     <Compile Include="Code\OpenGl.GestionImage\WindowClass.cs" />
     <Compile Include="Code\Operations\Modulo.cs" />
@@ -124,7 +133,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Code\CrashObject\Properties\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="ressources\carré.png" />
   </ItemGroup>

@@ -10,8 +10,8 @@ namespace UI_Library.Code.Object
 {
     class CrashObject
     {
-        Figure CurentFigure;
-        String simulationName;
+        Figure CurentFigure; //scatterPlot
+        String simulationName; //name of the simulation
         String simulationFolder;
         FloatVector speed;
         Point3 position;

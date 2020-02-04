@@ -9,9 +9,9 @@ namespace UI_Library.Code.Objects
 {
     class Wrench : FloatVector
     {
-        float X { get => this[0]; }
-        float Y { get => this[1]; }
-        float Z { get => this[2]; }
+        public float X { get => this[0]; }
+        public float Y { get => this[1]; }
+        public float Z { get => this[2]; }
         public Wrench(float X, float Y, float Z) : base(new float[] { X, Y, Z }) { }
     }
 }

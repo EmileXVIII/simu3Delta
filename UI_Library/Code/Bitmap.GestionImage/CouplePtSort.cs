@@ -8,9 +8,9 @@ namespace UI_Library.Code.GestionImage
 {
     class CouplePtSort
     {
-        Point2 min_priv;
-        Point2 max_priv;
-        public CouplePtSort(Point2 pt1, Point2 pt2)
+        Point3 min_priv;
+        Point3 max_priv;
+        public CouplePtSort(Point3 pt1, Point3 pt2)
         {
             this.min_priv = pt1;
             this.max_priv = pt2;
@@ -20,11 +20,11 @@ namespace UI_Library.Code.GestionImage
                 this.max_priv = pt1;
             }
         }
-        public Point2 max()
+        public Point3 max()
         {
             return this.max_priv;
         }
-        public Point2 min()
+        public Point3 min()
         {
             return this.min_priv;
         }

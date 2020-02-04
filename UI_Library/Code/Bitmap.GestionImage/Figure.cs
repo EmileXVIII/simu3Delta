@@ -7,7 +7,7 @@ using System.IO;
 
 namespace UI_Library.Code.GestionImage
 {
-    class Figure : List<Point>
+    class Figure : List<Point3>
     {
         public int getIndMinX()
         {
@@ -31,7 +31,7 @@ namespace UI_Library.Code.GestionImage
             while (line != null)
             {
                 string[] lineAtSplit = line.Split(',');
-                Point aPoint = new Point(Convert.ToInt16(lineAtSplit[0]), Convert.ToInt16(lineAtSplit[1]));
+                Point3 aPoint = new Point2(Convert.ToInt16(lineAtSplit[0]), Convert.ToInt16(lineAtSplit[1]));
                 this.Add(aPoint);
                 line = file.ReadLine();
             }

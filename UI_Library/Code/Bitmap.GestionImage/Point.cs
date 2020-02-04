@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UI_Library.Code.CrashObject.Properties;
 
 namespace UI_Library.Code.GestionImage
 {
@@ -16,6 +17,10 @@ namespace UI_Library.Code.GestionImage
             this.X = X;
             this.Y = Y;
             this.Z = Z;
+        }
+        public FloatVector toVector()
+        {
+            return new FloatVector(new float[] { this.X, this.Y, this.Z });
         }
     }
     class Point2 : Point3
