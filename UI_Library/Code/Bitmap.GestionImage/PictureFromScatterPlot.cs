@@ -10,11 +10,11 @@ namespace UI_Library.Code.GestionImage
     class PictureFromScatterPlot
     {
 
-        Figure myFigure;
+        public Figure myFigure { get; set; }
         public Bitmap Convert(int width, int hight)
         {
-            myFigure = new Figure();
-            myFigure.readFile();
+            this.myFigure = new Figure();
+            this.myFigure.readFile();
             int abscisse = 0;
             int ordonnee = 0;
             Bitmap myBitmap = new Bitmap(width, hight);

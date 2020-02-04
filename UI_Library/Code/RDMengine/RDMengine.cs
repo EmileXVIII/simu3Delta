@@ -16,6 +16,8 @@ namespace UI_Library.Code.RDMengine
          *      no bonce effect
          *      problem can be resolve in static
          */
+        Figure figureUp=null;
+        Figure figureDown = null;
         Figure figure { get; set; }
         public RDMengine(Figure figure)
         {
@@ -30,23 +32,39 @@ namespace UI_Library.Code.RDMengine
         }
         private bool checkIfPtInFigure(Point3 point)
         {
-            throw new NotImplementedException();
+            if (this.figureUp!=null) this.figureUp = resize(this.figure,true,1);
+            if (this.figureUp !=null) this.figureDown = resize(this.figure,false,2);
+            PictureFromScatterPlot pictureFromScaterPlot = new PictureFromScatterPlot();
+            pictureFromScaterPlot.myFigure = this.figureUp;
+            bool isInsidefigure = pictureFromScaterPlot.isIn(point.X, point.Y);
+            pictureFromScaterPlot.myFigure = this.figureDown;
+            bool isOnfigure = !pictureFromScaterPlot.isIn(point.X, point.Y);
+            return isInsidefigure && isOnfigure;
         }
         private bool getFarestPlan (Screw screw)
         {
             throw new NotImplementedException();
         }
-        private Figure resize(bool up)
+        private Figure resize(Figure figure, bool up,int n)
         {
             Point3 centerOfGravity = this.getCenterOfGravity();
             List<Point3> newFigure = new List<Point3>();
-            foreach (Point3 point in this.figure)
+            foreach (Point3 point in figure)
             {
-                float X, Y, Z;
-                X = this.incrementIf(this.isHigher(point.X, centerOfGravity.X), point.X);
-                Y = this.incrementIf(this.isHigher(point.Y, centerOfGravity.Y), point.Y);
-                Z = this.incrementIf(this.isHigher(point.Z, centerOfGravity.Z), point.Z);
-                newFigure.Add(new Point3((int)X, (int)Y, (int)Z));
+                int X, Y, Z;
+                if (up)
+                {
+                    X = this.incrementIf(n,this.isHigher(point.X, centerOfGravity.X), point.X);
+                    Y = this.incrementIf(n,this.isHigher(point.Y, centerOfGravity.Y), point.Y);
+                    Z = this.incrementIf(n,this.isHigher(point.Z, centerOfGravity.Z), point.Z);
+                }
+                else
+                {
+                    X = this.incrementIf(n,!this.isHigher(point.X, centerOfGravity.X), point.X);
+                    Y = this.incrementIf(n,!this.isHigher(point.Y, centerOfGravity.Y), point.Y);
+                    Z = this.incrementIf(n,!this.isHigher(point.Z, centerOfGravity.Z), point.Z);
+                }
+                newFigure.Add(new Point3(X, Y, Z));
             }
             return (Figure)newFigure;
         }
@@ -54,13 +72,13 @@ namespace UI_Library.Code.RDMengine
         {
             throw new NotImplementedException();
         }
-        private bool isHigher(float X,float Y)
+        private bool isHigher(int X,int Y)
         {
             return X > Y;
         }
-        private float incrementIf(bool condition,float toIncrement)
+        private int incrementIf(int incremetBy, bool condition,int toIncrement)
         {
-            return condition ? toIncrement + 1 : toIncrement - 1;
+            return condition ? toIncrement + incremetBy : toIncrement - incremetBy;
         }
 
     }
