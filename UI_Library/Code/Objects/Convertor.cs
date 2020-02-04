@@ -9,7 +9,7 @@ namespace UI_Library.Code.Objects
 {
     class Convertor
     {
-        private FloatVector toFloatVector(Vector<object> vector)
+        private FloatVector toFloatVectorPrivate(Vector<Object> vector)
         {
             float[] coordinates = new float[vector.coordinates.Length];
             for (int i=0;i<vector.coordinates.Length;i++) {
@@ -19,11 +19,11 @@ namespace UI_Library.Code.Objects
         }
         public FloatVector toFloatVector(Vector<float> vector)
         {
-            return toFloatVector(vector);
+            return this.toFloatVectorPrivate(vector);
         }
         public FloatVector toFloatVector(Vector<int> vector)
         {
-            return toFloatVector(vector);
+            return this.toFloatVectorPrivate(vector);
         }
     }
 }
