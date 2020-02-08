@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using UI_Library.Code.Exceptions;
 
 namespace UI_Library.Code.GestionImage
 {
@@ -45,6 +46,36 @@ namespace UI_Library.Code.GestionImage
                 i++;
             }
             if (isAverticalLigne) throw new ArgumentException("Vertical lines as object are not supported");
+        }
+        public void addPoint(Point3 pointToAdd, Point3 prevPoint, Point3 nextPoint)
+        {
+            int i = 0;
+            int lenFigure = this.Count;
+            while(i+1<lenFigure && ((this[i]!=prevPoint && this[i+1] != nextPoint)|| (this[i] != nextPoint && this[i + 1] != prevPoint))) { i++; }
+            if (i + 1 == lenFigure) throw new NotInFigureExeption();
+            else
+            {
+                this.Insert(i + 1, pointToAdd);
+            }
+        }
+        //return null if ptInFigure not in figure
+        public Point3[] getPtsAround(Point3 ptInFigure,uint precision=1)
+        {
+            Point3 ptPrev, ptNext;
+            int i = -1;
+            FtcLine ftcLine;
+            float calcY;
+            do
+            {
+                i++;
+                ptPrev = this[i];
+                ptNext = this[i + 1];
+                ftcLine = new FtcLine(ptPrev.toVector(), ptNext.toVector());
+                calcY = ftcLine.calcY(ptInFigure.X);
+            }
+            while (i + 1 < this.Count && (calcY > ptInFigure.Y + precision || calcY < ptInFigure.Y - precision));
+            if (i + 1 == this.Count) return null;
+            return new Point3[] {ptPrev,ptNext};
         }
     }
 }

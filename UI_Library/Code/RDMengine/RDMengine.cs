@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using UI_Library.Code.GestionImage;
 using UI_Library.Code.Objects;
 using UI_Library.Code.Exceptions;
+using UI_Library.Code.Operations
+using UI_Library.Code.CrashObject.Properties;
 
 namespace UI_Library.Code.RDMengine
 {
@@ -16,8 +18,8 @@ namespace UI_Library.Code.RDMengine
          *      no bonce effect
          *      problem can be resolve in static
          */
-        Figure figureUp=null;
-        Figure figureDown = null;
+        //Figure figureUp=null;
+        //Figure figureDown = null;
         Figure figure { get; set; }
         public RDMengine(Figure figure)
         {
@@ -25,11 +27,12 @@ namespace UI_Library.Code.RDMengine
         }
         public void applyScrew(Screw screw)
         {
-            if (!this.checkIfPtInFigure(screw.aplicationPoint))
-            {
-                throw new NotInFigureExeption();
-            }                
+            Point3[] results = this.figure.getPtsAround(screw.aplicationPoint);
+            if (results == null) throw new NotInFigureExeption();
+            else if(this.figure.IndexOf(screw.aplicationPoint)==-1)
+                this.figure.addPoint(screw.aplicationPoint,results[0],results[1]);
         }
+        /*
         private bool checkIfPtInFigure(Point3 point)
         {
             if (this.figureUp!=null) this.figureUp = resize(this.figure,true,1);
@@ -41,9 +44,40 @@ namespace UI_Library.Code.RDMengine
             bool isOnfigure = !pictureFromScaterPlot.isIn(point.X, point.Y);
             return isInsidefigure && isOnfigure;
         }
-        private bool getFarestPlan (Screw screw)
+        */
+        private bool checkIfPtInFigure(Point3 point)
         {
-            throw new NotImplementedException();
+            return this.figure.getPtsAround(point, 1) != null;
+        }
+        private void incraseCount(ref int ind, ref Double count,int lenFigure,int k)
+        {
+            FloatVector pt1 = this.figure[ind].toVector();
+            ind = Modulo.posModulo(ind + k, lenFigure);
+            FloatVector pt2 = this.figure[ind].toVector();
+            Double temps = 0;
+            for (int i = 0; i < pt1.coordinates.Length; i++)
+            {
+                temps += Math.Pow(pt1.coordinates[i] - pt2.coordinates[i], 2);
+            }
+            count += Math.Pow(temps, 0.5);
+
+        }
+        private Point3 getFarestPoint (Screw screw)
+        {
+            Point3 pt = screw.aplicationPoint;
+            Double countUp = 0, countDown = 0;
+            int indPt = this.figure.IndexOf(pt);
+            int lenFig = this.figure.Count;
+            int idown = Modulo.posModulo(indPt - 1, lenFig), iup= Modulo.posModulo(indPt + 1, lenFig);
+            while (idown != iup)
+            {
+                if (countUp > countDown)
+                {
+                    this.incraseCount(ref idown, ref countDown,lenFig,-1);
+                }
+                else this.incraseCount(ref iup, ref countUp, lenFig,1);
+            }
+            return this.figure[idown];
         }
         private Figure resize(Figure figure, bool up,int n)
         {

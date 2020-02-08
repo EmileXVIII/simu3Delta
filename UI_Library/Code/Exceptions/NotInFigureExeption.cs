@@ -8,7 +8,7 @@ namespace UI_Library.Code.Exceptions
 {
     class NotInFigureExeption:Exception
     {
-        public NotInFigureExeption():base("Try to apply force ouside the figure")
+        public NotInFigureExeption():base("Try to use point from ouside the figure")
         {
         }
     }

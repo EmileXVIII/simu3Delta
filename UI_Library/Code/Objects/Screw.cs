@@ -17,7 +17,7 @@ namespace UI_Library.Code.Objects
         public float L { get => this[3]; }
         public float M { get => this[4]; }
         public float N { get => this[5]; }
-        public Point3 aplicationPoint { get => aplicationPoint; set => aplicationPoint = changeApplicationPoint(value); }
+        public Point3 aplicationPoint { get; set;}
 
         private Screw changeApplicationPoint(Point3 point)
         {
