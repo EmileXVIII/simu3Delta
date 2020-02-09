@@ -58,7 +58,7 @@ namespace UI_Library.Code.GestionImage
             {
                 int rrr = 0;
             }
-            FtcLine myftcUp = new FtcLine(myCouplesUpAndDown.getUp().max().toVector(), myCouplesUpAndDown.getUp().min().toVector());
+            FtcLine myftcUp = FtcLine.fromPoints(myCouplesUpAndDown.getUp().max().toVector(), myCouplesUpAndDown.getUp().min().toVector());
             if (myftcUp.calcY(X) < Y)
             {
                 return false;
@@ -71,7 +71,7 @@ namespace UI_Library.Code.GestionImage
                 myCouplesUpAndDown.setDown(iDown);
             }
             if (nbBoucles >= this.myFigure.Count) { return false; }
-            FtcLine myftcDown = new FtcLine(myCouplesUpAndDown.getDown().max().toVector(), myCouplesUpAndDown.getDown().min().toVector());
+            FtcLine myftcDown = FtcLine.fromPoints(myCouplesUpAndDown.getDown().max().toVector(), myCouplesUpAndDown.getDown().min().toVector());
             if (myftcDown.calcY(X) > Y)
             {
                 return false;

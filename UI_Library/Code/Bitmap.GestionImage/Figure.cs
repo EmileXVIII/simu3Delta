@@ -70,7 +70,7 @@ namespace UI_Library.Code.GestionImage
                 i++;
                 ptPrev = this[i];
                 ptNext = this[i + 1];
-                ftcLine = new FtcLine(ptPrev.toVector(), ptNext.toVector());
+                ftcLine = FtcLine.fromPoints(ptPrev.toVector(), ptNext.toVector());
                 calcY = ftcLine.calcY(ptInFigure.X);
             }
             while (i + 1 < this.Count && (calcY > ptInFigure.Y + precision || calcY < ptInFigure.Y - precision));

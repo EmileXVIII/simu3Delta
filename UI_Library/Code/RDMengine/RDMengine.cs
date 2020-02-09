@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using UI_Library.Code.GestionImage;
 using UI_Library.Code.Objects;
 using UI_Library.Code.Exceptions;
-using UI_Library.Code.Operations
+using UI_Library.Code.Operations;
 using UI_Library.Code.CrashObject.Properties;
 
 namespace UI_Library.Code.RDMengine
@@ -31,6 +31,22 @@ namespace UI_Library.Code.RDMengine
             if (results == null) throw new NotInFigureExeption();
             else if(this.figure.IndexOf(screw.aplicationPoint)==-1)
                 this.figure.addPoint(screw.aplicationPoint,results[0],results[1]);
+        }
+        private Figure calculateDeformation(Point3 ptStart,Point3 ptEnd,Screw screw)
+        {
+            if (ptStart.toVector().substract(ptEnd.toVector()).isProportional(ptEnd.toVector().substract(screw.aplicationPoint.toVector())))
+            {
+                return normalDeformation();
+            }
+            else
+            {
+                return curbDeformation();
+            }
+        }
+        private Dictionary<string,FtcLine> project(FloatVector vectorUseToProject)
+        {
+            Dictionary<string, FtcLine> dict = new Dictionary<string, FtcLine>();
+            return dict;
         }
         /*
         private bool checkIfPtInFigure(Point3 point)
