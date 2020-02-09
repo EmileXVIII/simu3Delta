@@ -16,7 +16,7 @@ namespace UI_Library.Code.CrashObject.Properties
         public Vector(T[] coordinates)
         {
             this.length = coordinates.Length;
-            for (int i = 0; i < length; i++)
+            for (int i = 0; i < this.length; i++)
             {
                 this[i] = coordinates[i];
             }

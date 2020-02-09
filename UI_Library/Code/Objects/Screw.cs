@@ -17,17 +17,26 @@ namespace UI_Library.Code.Objects
         public float L { get => this[3]; }
         public float M { get => this[4]; }
         public float N { get => this[5]; }
-        public Point3 aplicationPoint { get; set;}
+        public FloatVector aplicationPoint { get; set;}
 
-        private Screw changeApplicationPoint(Point3 point)
+        private Screw changeApplicationPoint(FloatVector point)
         {
             if (this.aplicationPoint==null) throw new NoApplicationPointException();
             FloatVector wrench = this.getWrench();
             FloatVector twist = this.getTwist();
-            FloatVector oldPoint = this.aplicationPoint.toVector();
-            FloatVector newPoint = point.toVector();
+            FloatVector oldPoint = this.aplicationPoint;
+            FloatVector newPoint = point;
             twist = twist.add(newPoint.substract(oldPoint).vectorialProduct(wrench));
-            return this.fromWrenchAndTwist(wrench, twist, point);
+            return Screw.fromWrenchAndTwist(wrench, twist, newPoint);
+        }
+        public Screw project(Projector projector,bool toFinalBase=true)
+        {
+            FloatVector screwWrench = this.getWrench();
+            FloatVector screwTwist = this.getTwist();
+            screwWrench =projector.project(screwWrench,toFinalBase);
+            screwTwist = projector.project(screwTwist,toFinalBase);
+            Screw screw = Screw.fromWrenchAndTwist(screwWrench, screwTwist, projector.project(this.aplicationPoint,toFinalBase));
+            return screw;
         }
         public FloatVector getWrench()
         {
@@ -37,11 +46,11 @@ namespace UI_Library.Code.Objects
         {
             return new Twist(this.L, this.M, this.N );
         }
-        public Screw fromWrenchAndTwist(FloatVector wrench, FloatVector twist, Point3 applicationPoint)
+        public static Screw fromWrenchAndTwist(FloatVector wrench, FloatVector twist, FloatVector applicationPoint)
         {
             return new Screw(wrench.coordinates.Take(3).Concat(twist.coordinates.Take(3)).ToArray(),applicationPoint);
         }
-        public Screw(float[] coordinates,Point3 applicationPoint) : base(coordinates) 
+        public Screw(float[] coordinates, FloatVector applicationPoint) : base(coordinates) 
         {
             this.aplicationPoint = applicationPoint;
         }

@@ -21,27 +21,108 @@ namespace UI_Library.Code.RDMengine
         //Figure figureUp=null;
         //Figure figureDown = null;
         Figure figure { get; set; }
-        public RDMengine(Figure figure)
+        float IGz;
+        float E;
+        public RDMengine(Figure figure,float IGz,float E)
         {
             this.figure = figure;
+            this.IGz = IGz;
+            this.E = E;
         }
         public void applyScrew(Screw screw)
         {
-            Point3[] results = this.figure.getPtsAround(screw.aplicationPoint);
+            Point3[] results = this.figure.getPtsAround(screw.aplicationPoint.toPoint3());
             if (results == null) throw new NotInFigureExeption();
-            else if(this.figure.IndexOf(screw.aplicationPoint)==-1)
-                this.figure.addPoint(screw.aplicationPoint,results[0],results[1]);
+            else if(this.figure.IndexOf(screw.aplicationPoint.toPoint3()) ==-1)
+                this.figure.addPoint(screw.aplicationPoint.toPoint3(), results[0],results[1]);
         }
-        private Figure calculateDeformation(Point3 ptStart,Point3 ptEnd,Screw screw)
+        private Figure calculateDeformation(Point3 ptStart,Point3 ptEnd,Screw screw,Screw screwPtStart)
         {
-            if (ptStart.toVector().substract(ptEnd.toVector()).isProportional(ptEnd.toVector().substract(screw.aplicationPoint.toVector())))
+            if (ptStart.toVector().substract(ptEnd.toVector()).isProportional(ptEnd.toVector().substract(screw.aplicationPoint)))
             {
-                return normalDeformation();
+                return normalDeformation(ptStart,ptEnd,screw, screwPtStart);
             }
             else
             {
-                return curbDeformation();
+                return curbDeformation(ptStart, ptEnd, screw);
             }
+        }
+        private Figure curbDeformation(Point3 ptStart, Point3 ptEnd, Screw screw)
+        {
+
+        }
+        private float[] getDeformationFunctionArgs(float l,float M, float Z)
+        {
+            float X0 = (float)Math.Pow(l, 3) * Z / 6;
+            X0 -= (float)Math.Pow(l, 2) * M / 2;
+            float X1 = (float)Math.Pow(l, 2) * Z / 2;
+            X1 -= l * M;
+            float X2 = M / 2;
+            float X3 = -Z / 6;
+            return new float[] { X0, X1, X2, X3 };
+
+        }
+        private FunctionPolynomial getDeformationFunctionY(float l, float M, float Z)
+        {
+            float[] deformationFunctionArgs = this.getDeformationFunctionArgs(l, M, Z);
+            return new FunctionPolynomial(deformationFunctionArgs);
+
+        }
+        private FunctionPolynomial getDeformationFunctionZ(float l, float N, float Y)
+        {
+            float[] deformationFunctionArgs = this.getDeformationFunctionArgs(l, N, Y);
+            for (int i = 0; i < deformationFunctionArgs.Length; i++)
+            {
+                deformationFunctionArgs[i] = -deformationFunctionArgs[i];
+            }
+            return new FunctionPolynomial(deformationFunctionArgs);
+
+        }
+        private Figure normalDeformation(Point3 ptStart, Point3 ptEnd, Screw screw, Screw screwPtStart)
+        {
+            float distPtStartPtEnd = ptEnd.toVector().substract(ptStart.toVector()).getNorm();
+            float lScrew = screw.aplicationPoint.substract(ptStart.toVector()).getNorm();
+            Figure figure= new Figure();
+            if (distPtStartPtEnd < 2) return figure;
+            Projector projector = new Projector(Projector.getUsualBase());
+            projector.constructFinalBase(ptEnd.toVector().substract(ptStart.toVector()),ptStart.toVector());
+            FloatVector ptStartFinalBase=projector.projectToFinalBase(ptStart.toVector())
+                , ptEndFinalBase = projector.projectToFinalBase(ptEnd.toVector());
+
+            Screw screwFinalBase = screw.project(projector,true);
+
+
+            Screw screwPtStartFinalBase = screwPtStart.project(projector, true);
+            float l = distPtStartPtEnd;
+
+            FunctionPolynomial ftcStartY = this.getDeformationFunctionY(l, screwPtStartFinalBase.M, screwPtStartFinalBase.Z);
+
+            FunctionPolynomial ftcStartZ = this.getDeformationFunctionZ(l, screwPtStartFinalBase.N, screwPtStartFinalBase.Y);
+
+            FunctionPolynomial ftcEndY= this.getDeformationFunctionY(l, screwPtStartFinalBase.M + screwFinalBase.M + lScrew * screwFinalBase.Z, screwPtStartFinalBase.Z + screwFinalBase.Z);
+
+            FunctionPolynomial ftcEndZ = this.getDeformationFunctionZ(l, screwPtStartFinalBase.N + screwFinalBase.N + lScrew * screwFinalBase.Y, screwPtStartFinalBase.Y + screwFinalBase.Y);
+
+            FloatVector pointResult = ptStartFinalBase.vectorWhithAllCoordinatesEquals(0);
+            float X = ptStartFinalBase[0];
+            do
+            {
+                pointResult[0] = X;
+                if (X < lScrew)
+                {
+                    pointResult[1] = ftcStartY.calcY(X);
+                    pointResult[2] = ftcStartZ.calcY(X);
+                }
+                else
+                {
+                    pointResult[1] = ftcEndY.calcY(X);
+                    pointResult[2] = ftcEndZ.calcY(X);
+                }
+                X += 1;
+                figure.Add(projector.projectToOriginalBase(pointResult).toPoint3());
+            }
+            while (X <= ptEndFinalBase[0]);
+            return figure;
         }
         private Dictionary<string,FtcLine> project(FloatVector vectorUseToProject)
         {

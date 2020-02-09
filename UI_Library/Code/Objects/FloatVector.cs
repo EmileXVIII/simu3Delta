@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UI_Library.Code.GestionImage;
 using UI_Library.Code.Operations;
 
 namespace UI_Library.Code.CrashObject.Properties
@@ -63,6 +64,11 @@ namespace UI_Library.Code.CrashObject.Properties
             return (FloatVector)newVector;
         }
 
+        public FloatVector multiplyByScalar(float scalar)
+        {
+            return this.multiply(this.vectorWhithAllCoordinatesEquals(scalar));
+        }
+
         public float scalarProduct(Vector<float> vector)
         {
             Vector<float> newVector = this.Clone();
@@ -99,7 +105,11 @@ namespace UI_Library.Code.CrashObject.Properties
             }
             return true;
         }
-
+        public Point3 toPoint3()
+        {
+            if (this.length != 3) return null;
+            return new Point3((int)this[0], (int)this[1], (int)this[2]);
+        }
         public FloatVector vectorialProduct(Vector<float> vector)
         {
             {
