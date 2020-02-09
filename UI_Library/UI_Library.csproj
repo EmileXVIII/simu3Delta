@@ -61,6 +61,8 @@
     <Compile Include="Code\CrashObject\CrashObject.cs" />
     <Compile Include="Code\Exceptions\NoApplicationPointException.cs" />
     <Compile Include="Code\Exceptions\NotInFigureExeption.cs" />
+    <Compile Include="Code\Objects\ListWhithPermutations.cs" />
+    <Compile Include="Code\Objects\Projector.cs" />
     <Compile Include="Code\Objects\Convertor.cs" />
     <Compile Include="Code\Objects\Twist.cs" />
     <Compile Include="Code\Objects\Wrench.cs" />
@@ -71,6 +73,7 @@
     <Compile Include="Code\Exceptions\DimensionException.cs" />
     <Compile Include="Code\OpenGl.GestionImage\Test.cs" />
     <Compile Include="Code\OpenGl.GestionImage\WindowClass.cs" />
+    <Compile Include="Code\Operations\FunctionPolynomial.cs" />
     <Compile Include="Code\Operations\Modulo.cs" />
     <Compile Include="Code\RDMengine\RDMengine.cs" />
     <Compile Include="Form1.cs">
