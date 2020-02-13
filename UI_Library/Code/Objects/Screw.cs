@@ -19,7 +19,7 @@ namespace UI_Library.Code.Objects
         public float N { get => this[5]; }
         public FloatVector aplicationPoint { get; set;}
 
-        private Screw changeApplicationPoint(FloatVector point)
+        public Screw changeApplicationPoint(FloatVector point)
         {
             if (this.aplicationPoint==null) throw new NoApplicationPointException();
             FloatVector wrench = this.getWrench();

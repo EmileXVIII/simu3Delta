@@ -29,6 +29,14 @@ namespace UI_Library.Code.RDMengine
             this.IGz = IGz;
             this.E = E;
         }
+        private Point3 getPt(bool start,bool right,int posPtAround,int nbBoucles,int rightIncrement,Figure figure)
+        {
+            int posPtAroundSubstractPosPtStart = start ? (nbBoucles - 1) : nbBoucles;
+            int increment = right ? rightIncrement : -rightIncrement;
+            return figure[
+                   Modulo.posModulo(posPtAround + posPtAroundSubstractPosPtStart * increment, figure.Count)
+                ];
+        }
         public void applyScrew(Screw screw)
         {
             Point3[] ptsAround = this.figure.getPtsAround(screw.aplicationPoint.toPoint3());
@@ -36,6 +44,35 @@ namespace UI_Library.Code.RDMengine
             FloatVector directorPtAround = ptsAround[1].toVector().substract(ptsAround[0].toVector()).normalize();
             FloatVector ptOnFigure = ptsAround[0].toVector().add(directorPtAround.multiplyByScalar(screw.aplicationPoint.scalarProduct(directorPtAround)));
             Screw screwOnFigure = Screw.fromWrenchAndTwist(screw.getWrench(), screw.getTwist(),ptOnFigure);
+            List<Figure> listMoves = new List<Figure>();
+            listMoves.Add(this.calculateDeformation(ptsAround[0], ptsAround[1], screwOnFigure, null, true));
+            Point3 ptmax = this.getFarestPoint(screwOnFigure);
+            int i = 0;
+            int[] posPtsAround = new int[] { Array.IndexOf(this.figure.ToArray(), ptsAround[0]), Array.IndexOf(this.figure.ToArray(), ptsAround[1]) };
+            int increment = posPtsAround[0] < posPtsAround[1] ? 1 : -1;
+            bool endLeft = false, endRight = false;
+            int nbBoucles = 1;
+            while (!endLeft||!endRight)
+            {
+                Point3 ptStart, ptEnd;
+                foreach (bool right in new bool[]{ true, false})
+                {
+                    ptStart = this.getPt(true, right, posPtsAround[1], nbBoucles, increment, this.figure);
+                    ptEnd = this.getPt(false, right, posPtsAround[1], nbBoucles, increment, this.figure);
+                    if(ptEnd == ptmax)
+                    {
+                        if (right)
+                        {
+                            endRight = true;
+                        }
+                        else endLeft = true;
+                    }
+                    listMoves.Add((right?endRight:endLeft)? null : this.calculateDeformation(ptStart, ptEnd, null, screwOnFigure.changeApplicationPoint(ptStart.toVector()), false));
+                };
+                i += 2;
+                nbBoucles++;
+
+            }
             throw new NotImplementedException();/*
 
 
