@@ -52,13 +52,16 @@ namespace UI_Library.Code.RDMengine
             int increment = posPtsAround[0] < posPtsAround[1] ? 1 : -1;
             bool endLeft = false, endRight = false;
             int nbBoucles = 1;
+            List<Point3[]> ptsUsedToCalc = new List<Point3[]>();
+            ptsUsedToCalc.Add(ptsAround);
             while (!endLeft||!endRight)
             {
                 Point3 ptStart, ptEnd;
                 foreach (bool right in new bool[]{ true, false})
                 {
-                    ptStart = this.getPt(true, right, posPtsAround[1], nbBoucles, increment, this.figure);
+                    ptStart = this.getPt(true, right, posPtsAround[0], nbBoucles, increment, this.figure);
                     ptEnd = this.getPt(false, right, posPtsAround[1], nbBoucles, increment, this.figure);
+                    ptsUsedToCalc.Add(new Point3[] { ptStart, ptEnd });
                     if(ptEnd == ptmax)
                     {
                         if (right)
@@ -71,16 +74,90 @@ namespace UI_Library.Code.RDMengine
                 };
                 i += 2;
                 nbBoucles++;
-
             }
-            throw new NotImplementedException();/*
-
-
-
-
-
-
-            */
+            this.figure = this.getNewFigure(this.figure, listMoves,ptsUsedToCalc, ptmax);
+        }
+        private Figure getNewFigure(Figure oldFigure,List<Figure> listMoves, List<Point3[]> ptsUsedToCalc, Point3 ptmax)
+        {
+            int indWhereWeAreInList = listMoves.Count - 1;
+            int indStart = oldFigure.IndexOf(ptmax);
+            Figure newFigure1 = new Figure();
+            Figure newFigure2 = new Figure();
+            List<Point3> toApply1= new List<Point3>();
+            List<Point3> toApply2 = new List<Point3>();
+            while (indWhereWeAreInList != 0)
+            {
+                if (listMoves[indWhereWeAreInList] != null)
+                {
+                    this.calculateNextNewFigurePart(ref newFigure1, indWhereWeAreInList, listMoves, ptsUsedToCalc, ref toApply1);
+                }
+                indWhereWeAreInList--;
+                if (listMoves[indWhereWeAreInList] != null)
+                {
+                    this.calculateNextNewFigurePart(ref newFigure2, indWhereWeAreInList, listMoves, ptsUsedToCalc, ref toApply2);
+                }
+                indWhereWeAreInList--;
+            }
+            List<Figure> listMovesRight = new List<Figure>();
+            List<Figure> listMovesLeft = new List<Figure>();
+            List<Point3[]> ptsUsedToCalcRight = new List<Point3[]>();
+            List<Point3[]> ptsUsedToCalcLeft = new List<Point3[]>();
+            Point3[] ptStartAndEnd = ptsUsedToCalc[indWhereWeAreInList];
+            Figure moves = listMoves[0];
+            Point3 ptRight = ptStartAndEnd[1];
+            Point3 ptLeft = ptStartAndEnd[0];
+            FloatVector vector = ptRight.toVector().substract(ptLeft.toVector());
+            vector = vector.multiplyByScalar(1 / 2);
+            Point3 ptMid = ptLeft.toVector().add(vector).toPoint3();
+            ptsUsedToCalcLeft.Add(new Point3[] { ptMid, ptLeft });
+            ptsUsedToCalcRight.Add(new Point3[] { ptMid, ptRight });
+            Figure movesLeft = (Figure)moves.Take((int)(moves.Count / 2));
+            movesLeft.Reverse();
+            Figure movesRight = (Figure)moves.Skip((int)(moves.Count / 2)).Take(moves.Count - (int)(moves.Count / 2));
+            listMovesLeft.Add(movesLeft);
+            listMovesRight.Add(movesRight);
+            this.calculateNextNewFigurePart(ref newFigure1, 0, listMovesRight, ptsUsedToCalcRight, ref toApply1);
+            this.calculateNextNewFigurePart(ref newFigure2, 0, listMovesLeft, ptsUsedToCalcLeft, ref toApply2);
+            newFigure2.Reverse();
+            foreach(Point3 point in newFigure2)
+            {
+                newFigure1.Add(point);
+            }
+            newFigure1.Add(ptmax);
+            return newFigure1;
+        }
+        private void calculateNextNewFigurePart(ref Figure newFigure, int indWhereWeAreInList, List<Figure> listMoves, List<Point3[]> ptsUsedToCalc, ref List<Point3> toApply)
+        {
+            Point3[] ptStartAndEnd = ptsUsedToCalc[indWhereWeAreInList];
+            Figure moves = listMoves[indWhereWeAreInList];
+            Point3 ptStart = ptStartAndEnd[0];
+            Point3 ptEnd = ptStartAndEnd[1];
+            FloatVector vector = ptEnd.toVector().substract(ptStart.toVector()).normalize();
+            int i = 0;
+            FloatVector tempPoint;
+            Point3 checkPoint;
+            Figure tempsFigure = new Figure();
+            do
+            {
+                tempPoint = ptStart.toVector().add(vector.multiplyByScalar(i));
+                checkPoint = tempPoint.toPoint3();
+                if (i == 0 || !moves[i].toVector().isEquals(tempPoint.vectorWhithAllCoordinatesEquals(0)))
+                {
+                    foreach (Point3 point in toApply)
+                    {
+                        tempPoint = tempPoint.add(point.toVector());
+                    }
+                    tempsFigure.Add(tempPoint.toPoint3());
+                }
+                i++;
+            }
+            while (checkPoint != ptEnd);
+            tempsFigure.Reverse();
+            foreach(Point3 point in tempsFigure)
+            {
+                newFigure.Add(point);
+            }
+            toApply.Add(moves[0]);
         }
         private Figure calculateDeformation(Point3 ptStart,Point3 ptEnd,Screw screw,Screw screwPtStart,bool firstStep)
         {
@@ -196,7 +273,7 @@ namespace UI_Library.Code.RDMengine
                 pointResult[1] = ftcY.calcY(X)/(this.E*this.IGz);
                 pointResult[2] = ftcZ.calcY(X)/ (this.E * this.IGz);
                 X += 1;
-                figure.Add(projector.projectToOriginalBase(pointResult).toPoint3());
+                figure.Add(projector.projectToOriginalBase(pointResult,false).toPoint3());
             }
             while (X <= ptEndFinalBase[0]);
             return figure;
@@ -240,7 +317,7 @@ namespace UI_Library.Code.RDMengine
                     pointResult[2] = ftcEndZ.calcY(X) / (this.E * this.IGz);
                 }
                 X += 1;
-                figure.Add(projector.projectToOriginalBase(pointResult).toPoint3());
+                figure.Add(projector.projectToOriginalBase(pointResult,false).toPoint3());
             }
             while (X <= ptEndFinalBase[0]);
             return figure;
@@ -272,21 +349,20 @@ namespace UI_Library.Code.RDMengine
             FloatVector pt1 = this.figure[ind].toVector();
             ind = Modulo.posModulo(ind + k, lenFigure);
             FloatVector pt2 = this.figure[ind].toVector();
-            Double temps = 0;
-            for (int i = 0; i < pt1.coordinates.Length; i++)
-            {
-                temps += Math.Pow(pt1.coordinates[i] - pt2.coordinates[i], 2);
-            }
-            count += Math.Pow(temps, 0.5);
+            count += pt1.substract(pt2).getNorm();
 
         }
         private Point3 getFarestPoint (Screw screw)
         {
             Point3 pt = screw.aplicationPoint.toPoint3();
             Double countUp = 0, countDown = 0;
-            int indPt = this.figure.IndexOf(pt);
+            Point3[] ptsAround = this.figure.getPtsAround(pt);
+            if (ptsAround == null) return null;
+            int[] indPtsAround = new int[] { this.figure.IndexOf(ptsAround[0]), this.figure.IndexOf(ptsAround[1]) };
             int lenFig = this.figure.Count;
-            int idown = Modulo.posModulo(indPt - 1, lenFig), iup= Modulo.posModulo(indPt + 1, lenFig);
+            int idown = indPtsAround.Min(); int iup = indPtsAround.Max();
+            countUp += screw.aplicationPoint.substract(this.figure[iup].toVector()).getNorm();
+            countDown += screw.aplicationPoint.substract(this.figure[idown].toVector()).getNorm();
             while (idown != iup)
             {
                 if (countUp > countDown)

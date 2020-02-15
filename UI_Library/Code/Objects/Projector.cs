@@ -83,11 +83,11 @@ namespace UI_Library.Code.Objects
             partialBase.Add(nextPartialBaseVector);
             return partialBase;
         }
-        public FloatVector project(FloatVector vector,bool toFinalBase = true)
+        public FloatVector project(FloatVector vector,bool toFinalBase = true,bool ispoint =true)
         {
-            return toFinalBase ? this.projectToFinalBase(vector) : this.projectToOriginalBase(vector);
+            return toFinalBase ? this.projectToFinalBase(vector,ispoint) : this.projectToOriginalBase(vector,ispoint);
         }
-        public FloatVector projectToOriginalBase(FloatVector vector)
+        public FloatVector projectToOriginalBase(FloatVector vector, bool ispoint = true)
         {
             if (this.finalBase == null) return null;
             FloatVector result = vector.vectorWhithAllCoordinatesEquals(0);
@@ -102,11 +102,11 @@ namespace UI_Library.Code.Objects
                 }
                 
             }
-            result.substract(this.originalOrigin);
+            if(ispoint) result.substract(this.originalOrigin);
             return result;
 
         }
-        public FloatVector projectToFinalBase(FloatVector vector)
+        public FloatVector projectToFinalBase(FloatVector vector, bool ispoint = true)
         {
             if (this.finalBase == null) return null;
             FloatVector result = vector.vectorWhithAllCoordinatesEquals(0);
@@ -121,7 +121,7 @@ namespace UI_Library.Code.Objects
                 }
 
             }
-            result.substract(this.finalOrigin);
+            if (ispoint) result.substract(this.finalOrigin);
             return result;
 
         }
