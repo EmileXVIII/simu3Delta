@@ -39,7 +39,7 @@ namespace UI_Library.Code.GestionImage
         {
             this.a = a;
             this.b = b;
-            this.isAftn = error;
+            this.isAftn = !error;
         }
         public float calcY(float X)
         {

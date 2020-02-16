@@ -20,7 +20,7 @@ namespace UI_Library.Code.RDMengine
          */
         //Figure figureUp=null;
         //Figure figureDown = null;
-        Figure figure { get; set; }
+        public Figure figure { get; set; }
         float IGz;
         float E;
         public RDMengine(Figure figure,float IGz,float E)
@@ -62,7 +62,8 @@ namespace UI_Library.Code.RDMengine
                     ptStart = this.getPt(true, right, posPtsAround[0], nbBoucles, increment, this.figure);
                     ptEnd = this.getPt(false, right, posPtsAround[1], nbBoucles, increment, this.figure);
                     ptsUsedToCalc.Add(new Point3[] { ptStart, ptEnd });
-                    if(ptEnd == ptmax)
+                    listMoves.Add((right?endRight:endLeft)? null : this.calculateDeformation(ptStart, ptEnd, null, screwOnFigure.changeApplicationPoint(ptStart.toVector()), false));
+                    if (ptEnd == ptmax)
                     {
                         if (right)
                         {
@@ -70,7 +71,6 @@ namespace UI_Library.Code.RDMengine
                         }
                         else endLeft = true;
                     }
-                    listMoves.Add((right?endRight:endLeft)? null : this.calculateDeformation(ptStart, ptEnd, null, screwOnFigure.changeApplicationPoint(ptStart.toVector()), false));
                 };
                 i += 2;
                 nbBoucles++;

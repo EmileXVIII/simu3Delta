@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using UI_Library.Code.Exceptions;
+using UI_Library.Code.Operations;
 
 namespace UI_Library.Code.GestionImage
 {
@@ -27,7 +28,7 @@ namespace UI_Library.Code.GestionImage
         }
         public void readFile()
         {
-            StreamReader file = new StreamReader(@"C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\monfichier.txt");
+            StreamReader file = new StreamReader(@"C:/emile.dir/perso/projets/Simu3Delta/monfichier.txt");
             string line = file.ReadLine(); ;
             while (line != null)
             {
@@ -69,7 +70,7 @@ namespace UI_Library.Code.GestionImage
             {
                 i++;
                 ptPrev = this[i];
-                ptNext = this[i + 1];
+                ptNext = this[Modulo.posModulo(i + 1, this.Count)];
                 ftcLine = FtcLine.fromPoints(ptPrev.toVector(), ptNext.toVector());
                 calcY = ftcLine.calcY(ptInFigure.X);
             }

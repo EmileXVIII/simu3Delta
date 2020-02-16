@@ -9,6 +9,10 @@ namespace UI_Library.Code.CrashObject.Properties
     {
         public FloatVector(float[] coordinates) : base(coordinates) { }
 
+        public static FloatVector fromVectorOfFloat(Vector<float> vector)
+        {
+            return new FloatVector(vector.coordinates);
+        }
         public FloatVector add(Vector<float> vector)
         {
             Vector<float> newVector = base.Clone();
@@ -16,7 +20,7 @@ namespace UI_Library.Code.CrashObject.Properties
             {
                 newVector[i] += vector[i];
             }
-            return (FloatVector) newVector;
+            return FloatVector.fromVectorOfFloat(newVector);
         }
 
         public FloatVector vectorWhithAllCoordinatesEquals(float coordinate)
@@ -51,7 +55,7 @@ namespace UI_Library.Code.CrashObject.Properties
             {
                 newVector[i] -= vector[i];
             }
-            return (FloatVector) newVector;
+            return FloatVector.fromVectorOfFloat(newVector);
         }
 
         public FloatVector multiply(Vector<float> vector)
@@ -61,7 +65,7 @@ namespace UI_Library.Code.CrashObject.Properties
             {
                 newVector[i] *= vector[i];
             }
-            return (FloatVector)newVector;
+            return FloatVector.fromVectorOfFloat(newVector);
         }
 
         public FloatVector multiplyByScalar(float scalar)
@@ -119,7 +123,7 @@ namespace UI_Library.Code.CrashObject.Properties
                     newVector[i] *= newVector[Modulo.posModulo(i + 1, this.length)] * vector[Modulo.posModulo(i + 2, this.length)]
                                     - newVector[Modulo.posModulo(i + 2, this.length)] * vector[Modulo.posModulo(i + 1, this.length)];
                 }
-                return (FloatVector) newVector;
+                return FloatVector.fromVectorOfFloat(newVector);
             }
         }
     }

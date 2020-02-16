@@ -10,12 +10,13 @@ namespace UI_Library.Code.CrashObject.Properties
 {
     class Vector<T>
     {
-        public T[] coordinates { get; }
-        public T this[int index] { get => coordinates[index]; set => coordinates[index] = value; }
+        public T[] coordinates;
+        public T this[int index] { get => coordinates[index]; set { coordinates[index] = value; } }
         public int length { get; }
         public Vector(T[] coordinates)
         {
             this.length = coordinates.Length;
+            this.coordinates = new T[coordinates.Length];
             for (int i = 0; i < this.length; i++)
             {
                 this[i] = coordinates[i];
@@ -32,4 +33,3 @@ namespace UI_Library.Code.CrashObject.Properties
         }
     }
 }
-C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\UI_Library\Code\Objects\Twist.cs

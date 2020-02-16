@@ -73,7 +73,7 @@ namespace UI_Library.Code.Objects
         {
             int lenVector = vector.coordinates.Length;
             int i = partialBase.Count;
-            FloatVector nextPartialBaseVector = (FloatVector)vector.Clone();
+            FloatVector nextPartialBaseVector = FloatVector.fromVectorOfFloat(vector.Clone());
             while (i < 0)
             {
                 float lambda = this.lambdaForCscalaireAisNull(nextPartialBaseVector, partialBase[i - 1]);

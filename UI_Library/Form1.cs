@@ -21,9 +21,10 @@ namespace UI_Library
 
         private void buttonTest_Click(object sender, EventArgs e)
         {
-            new PictureFromScatterPlot().Convert(5000,5000);
-            createObject createObject = new createObject();
-            createObject.Show();
+            //new PictureFromScatterPlot().Convert(5000,5000);
+            //createObject createObject = new createObject();
+            (new UI_Library.Code.Tests.Test()).test1();
+            //createObject.Show();
         }
 
         private void subfileSubnewObjectToolStripMenuItem_Click(object sender, EventArgs e)

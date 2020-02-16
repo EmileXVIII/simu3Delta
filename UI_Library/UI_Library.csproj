@@ -76,6 +76,7 @@
     <Compile Include="Code\Operations\FunctionPolynomial.cs" />
     <Compile Include="Code\Operations\Modulo.cs" />
     <Compile Include="Code\RDMengine\RDMengine.cs" />
+    <Compile Include="Code\Tests\Test.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

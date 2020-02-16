@@ -16,7 +16,7 @@ namespace UI_Library.Code.Tests
             Figure figureTest = new Figure();
             figureTest.readFile();
             Screw screwTest = new Screw(new float[] { 500, 500, 0, 0, 0, 0 }, figureTest[0].toVector());
-            RDMengine engineTest = new RDMengine(figureTest,500,500);
+            UI_Library.Code.RDMengine.RDMengine engineTest = new UI_Library.Code.RDMengine.RDMengine(figureTest,500,500);
             engineTest.applyScrew(screwTest);
             Figure figureResult = engineTest.figure;
         }
