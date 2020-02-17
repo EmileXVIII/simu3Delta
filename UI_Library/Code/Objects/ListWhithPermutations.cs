@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UI_Library.Code.Objects
 {
-    class ListWhithPermutations<T>:List<T>
+    public class ListWhithPermutations<T>:List<T>
     {
         public void cyclicPermutation(bool toRight=true,uint n=1)
         {

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UI_Library.Code.CrashObject.Properties;
+using UI_Library.Code.Objects;
 
 namespace UI_Library.Code.GestionImage
 {
-    class Point3
+    public class Point3
     {
         public int X { get; }
         public int Y { get; }
@@ -23,7 +23,7 @@ namespace UI_Library.Code.GestionImage
             return new FloatVector(new float[] { this.X, this.Y, this.Z });
         }
     }
-    class Point2 : Point3
+    public class Point2 : Point3
     {
         public Point2(int X, int Y) : base(X,Y,0)
         {

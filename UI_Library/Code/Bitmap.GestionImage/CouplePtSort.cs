@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UI_Library.Code.GestionImage
 {
-    class CouplePtSort
+    public class CouplePtSort
     {
         Point3 min_priv;
         Point3 max_priv;

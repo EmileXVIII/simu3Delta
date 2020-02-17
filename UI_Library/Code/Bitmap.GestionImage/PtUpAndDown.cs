@@ -7,7 +7,7 @@ using UI_Library.Code.Operations;
 
 namespace UI_Library.Code.GestionImage
 {
-    class PtUpAndDown
+    public class PtUpAndDown
     {
         Figure myFigure;
         CouplePtSort coupleUp;

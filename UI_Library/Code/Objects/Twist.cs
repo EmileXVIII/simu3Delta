@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UI_Library.Code.CrashObject.Properties;
 
 namespace UI_Library.Code.Objects
 {
-    class Twist : FloatVector
+    public class Twist : FloatVector
     {
         public float L { get => this[0]; }
         public float M { get => this[1]; }

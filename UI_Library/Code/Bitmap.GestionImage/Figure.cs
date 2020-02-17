@@ -9,7 +9,7 @@ using UI_Library.Code.Operations;
 
 namespace UI_Library.Code.GestionImage
 {
-    class Figure : List<Point3>
+    public class Figure : List<Point3>
     {
         public int getIndMinX()
         {

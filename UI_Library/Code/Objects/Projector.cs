@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UI_Library.Code.CrashObject.Properties;
 using UI_Library.Code.GestionImage;
 
 namespace UI_Library.Code.Objects
 {
-    class Projector
+    public class Projector
     {
         FloatVector[] originalBase;
         FloatVector[] finalBase;
@@ -40,7 +39,7 @@ namespace UI_Library.Code.Objects
         }
         public bool constructFinalBase(FloatVector axeX,FloatVector origin)
         {
-            if (axeX.Equals(axeX.vectorWhithAllCoordinatesEquals(0))&&axeX.length!=origin.length) return false;
+            if (axeX.Equals(axeX.vectorWhithAllCoordinatesEquals(0))||axeX.length!=origin.length) return false;
             this.finalOrigin = origin;
             List<FloatVector> newBase = new List<FloatVector>();
             int indCordinateVectorNotNull = 0;
@@ -74,7 +73,7 @@ namespace UI_Library.Code.Objects
             int lenVector = vector.coordinates.Length;
             int i = partialBase.Count;
             FloatVector nextPartialBaseVector = FloatVector.fromVectorOfFloat(vector.Clone());
-            while (i < 0)
+            while (i > 0)
             {
                 float lambda = this.lambdaForCscalaireAisNull(nextPartialBaseVector, partialBase[i - 1]);
                 nextPartialBaseVector = nextPartialBaseVector.add(partialBase[i - 1].multiplyByScalar(lambda));
@@ -108,20 +107,21 @@ namespace UI_Library.Code.Objects
         }
         public FloatVector projectToFinalBase(FloatVector vector, bool ispoint = true)
         {
+            FloatVector[] basicBase = Projector.getUsualBase();
             if (this.finalBase == null) return null;
             FloatVector result = vector.vectorWhithAllCoordinatesEquals(0);
-            result.add(this.originalOrigin);
+            result=result.add(this.originalOrigin);
             for (int coordinate = 0; coordinate < vector.coordinates.Length; coordinate++)
             {
                 for (int i = 0; i < this.finalBase.Length; i++)
                 {
-                    result.add(this.finalBase[i].multiplyByScalar(
+                    result=result.add(basicBase[i].multiplyByScalar(
                         vector.coordinates[coordinate] * this.originalBase[coordinate].scalarProduct(this.finalBase[i]))
                     );
                 }
 
             }
-            if (ispoint) result.substract(this.finalOrigin);
+            if (ispoint) result=result.substract(this.finalOrigin);
             return result;
 
         }

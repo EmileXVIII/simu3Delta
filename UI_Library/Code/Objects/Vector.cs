@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using UI_Library.Code.Exceptions;
 
-namespace UI_Library.Code.CrashObject.Properties
+namespace UI_Library.Code.Objects
 {
-    class Vector<T>
+    public class Vector<T>
     {
         public T[] coordinates;
         public T this[int index] { get => coordinates[index]; set { coordinates[index] = value; } }

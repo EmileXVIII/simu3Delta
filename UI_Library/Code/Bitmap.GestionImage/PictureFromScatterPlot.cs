@@ -7,7 +7,7 @@ using UI_Library.Code.Operations;
 
 namespace UI_Library.Code.GestionImage
 {
-    class PictureFromScatterPlot
+    public class PictureFromScatterPlot
     {
 
         public Figure myFigure { get; set; }

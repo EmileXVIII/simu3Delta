@@ -7,7 +7,6 @@ using UI_Library.Code.GestionImage;
 using UI_Library.Code.Objects;
 using UI_Library.Code.Exceptions;
 using UI_Library.Code.Operations;
-using UI_Library.Code.CrashObject.Properties;
 
 namespace UI_Library.Code.RDMengine
 {

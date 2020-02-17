@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UI_Library.Code.GestionImage;
 using UI_Library.Code.Operations;
 
-namespace UI_Library.Code.CrashObject.Properties
+namespace UI_Library.Code.Objects
 {
-    class FloatVector : Vector<float>
+    public class FloatVector : Vector<float>
     {
         public FloatVector(float[] coordinates) : base(coordinates) { }
 

@@ -1,6 +1,6 @@
-﻿namespace UI_Library.Code.CrashObject.Properties
+﻿namespace UI_Library.Code.Objects
 {
-    interface IVector<T>
+    public interface IVector<T>
     {
         T this[int index] { get; set; }
 
