@@ -30,7 +30,7 @@ namespace UI_Library.Code.RDMengine
         }
         private Point3 getPt(bool start,bool right,int posPtAround,int nbBoucles,int rightIncrement,Figure figure)
         {
-            int posPtAroundSubstractPosPtStart = start ? (nbBoucles - 1) : nbBoucles;
+            int posPtAroundSubstractPosPtStart = start ? nbBoucles - 1 : nbBoucles;
             int increment = right ? rightIncrement : -rightIncrement;
             return figure[
                    Modulo.posModulo(posPtAround + posPtAroundSubstractPosPtStart * increment, figure.Count)
@@ -58,8 +58,9 @@ namespace UI_Library.Code.RDMengine
                 Point3 ptStart, ptEnd;
                 foreach (bool right in new bool[]{ true, false})
                 {
-                    ptStart = this.getPt(true, right, posPtsAround[0], nbBoucles, increment, this.figure);
-                    ptEnd = this.getPt(false, right, posPtsAround[1], nbBoucles, increment, this.figure);
+                    int indRef = right ? 1 : 0;
+                    ptStart = this.getPt(true, right, posPtsAround[indRef], nbBoucles, increment, this.figure);
+                    ptEnd = this.getPt(false, right, posPtsAround[indRef], nbBoucles, increment, this.figure);
                     ptsUsedToCalc.Add(new Point3[] { ptStart, ptEnd });
                     listMoves.Add((right?endRight:endLeft)? null : this.calculateDeformation(ptStart, ptEnd, null, screwOnFigure.changeApplicationPoint(ptStart.toVector()), false));
                     if (ptEnd == ptmax)
@@ -110,9 +111,9 @@ namespace UI_Library.Code.RDMengine
             Point3 ptMid = ptLeft.toVector().add(vector).toPoint3();
             ptsUsedToCalcLeft.Add(new Point3[] { ptMid, ptLeft });
             ptsUsedToCalcRight.Add(new Point3[] { ptMid, ptRight });
-            Figure movesLeft = (Figure)moves.Take((int)(moves.Count / 2));
+            Figure movesLeft = moves.slice(0, (int)(moves.Count / 2));
             movesLeft.Reverse();
-            Figure movesRight = (Figure)moves.Skip((int)(moves.Count / 2)).Take(moves.Count - (int)(moves.Count / 2));
+            Figure movesRight = moves.slice((int)(moves.Count / 2));
             listMovesLeft.Add(movesLeft);
             listMovesRight.Add(movesRight);
             this.calculateNextNewFigurePart(ref newFigure1, 0, listMovesRight, ptsUsedToCalcRight, ref toApply1);
@@ -150,7 +151,7 @@ namespace UI_Library.Code.RDMengine
                 }
                 i++;
             }
-            while (checkPoint != ptEnd);
+            while (checkPoint.toVector().isEquals(ptEnd.toVector()));
             tempsFigure.Reverse();
             foreach(Point3 point in tempsFigure)
             {
@@ -268,7 +269,8 @@ namespace UI_Library.Code.RDMengine
             float X = ptStartFinalBase[0];
             do
             {
-                pointResult[0] = X;
+                pointResult = ptStartFinalBase.vectorWhithAllCoordinatesEquals(0);
+                //pointResult[0] = X;
                 pointResult[1] = ftcY.calcY(X)/(this.E*this.IGz);
                 pointResult[2] = ftcZ.calcY(X)/ (this.E * this.IGz);
                 X += 1;
@@ -304,7 +306,8 @@ namespace UI_Library.Code.RDMengine
             float X = ptStartFinalBase[0];
             do
             {
-                pointResult[0] = X;
+                pointResult = ptStartFinalBase.vectorWhithAllCoordinatesEquals(0);
+                //pointResult[0] = X;
                 if (X < lScrew)
                 {
                     pointResult[1] = ftcStartY.calcY(X) / (this.E * this.IGz);

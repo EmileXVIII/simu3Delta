@@ -89,19 +89,20 @@ namespace UI_Library.Code.Objects
         public FloatVector projectToOriginalBase(FloatVector vector, bool ispoint = true)
         {
             if (this.finalBase == null) return null;
+            FloatVector[] basicBase = Projector.getUsualBase();
             FloatVector result = vector.vectorWhithAllCoordinatesEquals(0);
-            result.add(this.finalOrigin);
+            result = result.add(this.finalOrigin);
             for(int coordinate = 0; coordinate < vector.coordinates.Length; coordinate++)
             {
                 for(int i=0; i < this.finalBase.Length; i++)
                 {
-                    result.add(this.originalBase[i].multiplyByScalar(
+                    result = result.add(basicBase[i].multiplyByScalar(
                         vector.coordinates[coordinate] * this.finalBase[coordinate].scalarProduct(this.originalBase[i]))
                     );
                 }
                 
             }
-            if(ispoint) result.substract(this.originalOrigin);
+            if(ispoint) result = result.substract(this.originalOrigin);
             return result;
 
         }

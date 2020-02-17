@@ -18,7 +18,10 @@ namespace UnitTestSimu3Delta
             Projector projector = new Projector(Projector.getUsualBase());
             FloatVector newAxeX = new FloatVector(new float[] { 0, 0, 1 });
             projector.constructFinalBase(newAxeX, newAxeX.vectorWhithAllCoordinatesEquals(0));
-            Assert.AreEqual(testVector[2] , projector.projectToFinalBase(testVector)[0]);
+            FloatVector resultTest = projector.projectToFinalBase(testVector);
+            Assert.AreEqual(testVector[2] , resultTest[0]);
+            FloatVector resultTest2 = projector.projectToOriginalBase(resultTest);
+            Assert.IsTrue(testVector.isEquals(resultTest2));
         }
     }
 }

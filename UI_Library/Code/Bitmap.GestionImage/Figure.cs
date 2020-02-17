@@ -11,6 +11,18 @@ namespace UI_Library.Code.GestionImage
 {
     public class Figure : List<Point3>
     {
+        public Figure slice(int indStart, int indEnd=-1)
+        {
+            if (indEnd == -1) indEnd = this.Count;
+            Figure slicedFigure = new Figure();
+            int i = indStart;
+            while (i < indEnd)
+            {
+                slicedFigure.Add(this[i]);
+                i++;
+            }
+            return slicedFigure;
+        }
         public int getIndMinX()
         {
             float minX = this[0].X;
@@ -28,7 +40,7 @@ namespace UI_Library.Code.GestionImage
         }
         public void readFile()
         {
-            StreamReader file = new StreamReader(@"C:/emile.dir/perso/projets/Simu3Delta/monfichier.txt");
+            StreamReader file = new StreamReader(@"C:/emile.dir/perso/Ynov/projets/Simu3DeltaC#/monfichier.txt");
             string line = file.ReadLine(); ;
             while (line != null)
             {
