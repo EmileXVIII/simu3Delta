@@ -15,12 +15,12 @@ namespace UI_Library.Code.Operations
         }
         public float calcY(float X)
         {
-            float Y = 0;
+            OperationFile<float> operationFile = OperationFile<float>.newOperationFileSum();
             for (int i = 0; i < this.listFactors.Length; i++)
             {
-                Y += this.listFactors[i] * (float)Math.Pow(X, i);
+                operationFile.Add(this.listFactors[i] * (float)Math.Pow(X, i));
             }
-            return Y;
+            return operationFile.doOpp();
         }
     }
 }
