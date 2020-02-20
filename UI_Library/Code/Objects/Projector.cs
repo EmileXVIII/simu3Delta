@@ -91,7 +91,7 @@ namespace UI_Library.Code.Objects
             if (this.finalBase == null) return null;
             FloatVector[] basicBase = Projector.getUsualBase();
             FloatVector result = vector.vectorWhithAllCoordinatesEquals(0);
-            result = result.add(this.finalOrigin);
+            if(ispoint) result = result.add(this.finalOrigin);
             for(int coordinate = 0; coordinate < vector.coordinates.Length; coordinate++)
             {
                 for(int i=0; i < this.finalBase.Length; i++)

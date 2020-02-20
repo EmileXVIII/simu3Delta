@@ -120,8 +120,8 @@ namespace UI_Library.Code.Objects
                 Vector<float> newVector = this.Clone();
                 for (int i = 0; i < this.length; i++)
                 {
-                    newVector[i] *= newVector[Modulo.posModulo(i + 1, this.length)] * vector[Modulo.posModulo(i + 2, this.length)]
-                                    - newVector[Modulo.posModulo(i + 2, this.length)] * vector[Modulo.posModulo(i + 1, this.length)];
+                    newVector[i] *= this[Modulo.posModulo(i + 1, this.length)] * vector[Modulo.posModulo(i + 2, this.length)]
+                                    - this[Modulo.posModulo(i + 2, this.length)] * vector[Modulo.posModulo(i + 1, this.length)];
                 }
                 return FloatVector.fromVectorOfFloat(newVector);
             }
