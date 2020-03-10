@@ -261,9 +261,9 @@ namespace UI_Library.Code.RDMengine
             Screw screwPtStartFinalBase = screwPtStart.project(projector, true);
             float l = distPtStartPtEnd;
 
-            FunctionPolynomial ftcY = this.getDeformationFunctionY(l,0, screwPtStartFinalBase.N, - screwPtStartFinalBase.Y,true,0);
+            FunctionPolynomial ftcY = this.getDeformationFunctionY(l,0, screwPtStartFinalBase.N, screwPtStartFinalBase.Y,true,0);
 
-            FunctionPolynomial ftcZ = this.getDeformationFunctionZ(l, 0, screwPtStartFinalBase.M, screwPtStartFinalBase.Z, true, 0);
+            FunctionPolynomial ftcZ = this.getDeformationFunctionZ(l, 0, screwPtStartFinalBase.M, - screwPtStartFinalBase.Z, true, 0);
 
             FloatVector pointResult = ptStartFinalBase.vectorWhithAllCoordinatesEquals(0);
             float X = ptStartFinalBase[0];

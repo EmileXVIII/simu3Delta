@@ -42,3 +42,7 @@ C:\emile.dir\perso\projets\simu3Delta\UI_Library\bin\Debug\System.Drawing.Common
 C:\emile.dir\perso\projets\simu3Delta\UI_Library\bin\Debug\OpenTK.pdb
 C:\emile.dir\perso\projets\simu3Delta\UI_Library\bin\Debug\OpenTK.xml
 C:\emile.dir\perso\projets\simu3Delta\UI_Library\obj\Debug\UI_Library.csproj.CopyComplete
+C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\UI_Library\bin\Debug\OxyPlot.dll
+C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\UI_Library\bin\Debug\OxyPlot.Wpf.dll
+C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\UI_Library\bin\Debug\OxyPlot.xml
+C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\UI_Library\bin\Debug\OxyPlot.Wpf.xml

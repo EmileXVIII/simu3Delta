@@ -39,7 +39,14 @@ namespace UI_Library.Code.Operations
             switch (opp)
             {
                 case '+':
-                    opperator = new Operation((X, Y) => X + Y);
+                    opperator = new Operation((X, Y) => {
+                        float temps = X + Y;
+                        if(Math.Abs(temps)<Math.Abs(X/Math.Pow(10,7)) && Math.Abs(temps) < Math.Abs(Y / Math.Pow(10, 7)))
+                        {
+                            temps = 0;
+                        }
+                        return temps;
+                    });
                     break;
                 case '*':
                     opperator = new Operation((X, Y) => X + Y);
@@ -68,6 +75,7 @@ namespace UI_Library.Code.Operations
 
             }
             listAbsolute2.Sort();
+            listAbsolute2.Reverse();
             foreach (float element in listAbsolute2)
             {
                 listInds.Add(listAbsolute1.IndexOf(element));
