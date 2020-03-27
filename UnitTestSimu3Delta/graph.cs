@@ -12,9 +12,11 @@ namespace UnitTestSimu3Delta
 {
     public partial class graph : Form
     {
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart504;
         public graph(System.Windows.Forms.DataVisualization.Charting.DataPoint[] dataset)
         {
-            InitializeComponent(dataset);
+            InitializeComponent();//dataset);
+            InitializeGaph(dataset);
         }
     }
 }
