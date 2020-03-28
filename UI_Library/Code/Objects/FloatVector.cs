@@ -112,7 +112,7 @@ namespace UI_Library.Code.Objects
         public Point3 toPoint3()
         {
             if (this.length != 3) return null;
-            return new Point3((int)this[0], (int)this[1], (int)this[2]);
+            return new Point3((long)this[0], (long)this[1], (long)this[2]);
         }
         public FloatVector vectorialProduct(Vector<float> vector)
         {

@@ -187,22 +187,29 @@ namespace UI_Library.Code.RDMengine
         }
         private float[] getDeformationFunctionArgsHyperstatismDeg2(float l,float k,float M,float Z,bool start)// bati, screw en B, bati
         {
-            float k2Ml2 = (float)Math.Pow(k, 2) - (float)Math.Pow(l, 2);
-            float Z0 = M + Z * k;
-            Z0 *= (float)(Math.Pow(k, 2))/2 + l * (k - (1/2) * l) + (k - l) * (k - (1/2) * l);
-            Z0 += Z * ((float)Math.Pow(k, 3) / 6 - (k2Ml2 * (k - (1/2) * l)));
-            float M0 = (M + k * Z) * (k - l) - (k2Ml2 * Z / 2) + ((float)Math.Pow(l, 2) / 2) * Z0;
-            M0 /= l;
+            //M0=k*Z0/2
+            float stack = (M + k * Z) * (float)Math.Pow(k, 2) / 2;
+            stack -= Z* (float)Math.Pow(k, 3)/6;
+            stack += Z * (float)Math.Pow(l, 3) / 6;
+            stack -= (M + k * Z) * (float)Math.Pow(l, 2) / 2;
+            stack -= (M + k * Z) * l * (k - l);
+            stack += Z * (float)Math.Pow(l, 2) * (k - l);
+            float nbZ0 = -(float)Math.Pow(l, 2) * k / 4;
+            nbZ0 += (float)Math.Pow(l, 3) / 6;
+            nbZ0 += (k - l) * (-k * l/2 + (float)Math.Pow(l, 2) / 2);
+            float Z0 = -stack / nbZ0;
+            float M0 = k * Z0/2;
             float A, B;
             if (start)
             {
-                A = 0; B = 0;
+                A = 0;
+                B = 0;
                 return this.getDeformationFunctionArgsFromFormule(l, k, M0, Z0, A, B);
             }
             else 
             {
                 A = -(M0 + M + k * Z) * l + ((float)Math.Pow(l, 2) / 2) * (Z0 + Z);
-                B = -(M0 + M + k * Z) * ((float)Math.Pow(l, 2) / 2) + ((float)Math.Pow(l, 3) / 6) * (Z0 + Z) - A * l;
+                B = -(M0 + M + k * Z) * ((float)Math.Pow(l, 2) / 2) + ((float)Math.Pow(l, 3) / 6) * (Z0 + Z) - A * l>>>;
                 return this.getDeformationFunctionArgsFromFormule(l, k, M0 + M + k * Z, Z0 + Z, A, B);
             }
 
@@ -234,6 +241,12 @@ namespace UI_Library.Code.RDMengine
         {
             GetDeformationFunctionArgs getDeformationFunctionArgs = this.getDeformationFunction(hyperstatism);
             float[] deformationFunctionArgs = getDeformationFunctionArgs(l, k,M,Z, start);
+            /*
+            for (int i = 0; i < deformationFunctionArgs.Length; i++)
+            {
+                deformationFunctionArgs[i] = -deformationFunctionArgs[i];
+            }
+            */
             return new FunctionPolynomial(deformationFunctionArgs);
 
         }
@@ -241,10 +254,6 @@ namespace UI_Library.Code.RDMengine
         {
             GetDeformationFunctionArgs getDeformationFunctionArgs = this.getDeformationFunction(hyperstatism);
             float[] deformationFunctionArgs = getDeformationFunctionArgs(l, k, N, Y, start);
-            for (int i = 0; i < deformationFunctionArgs.Length; i++)
-            {
-                deformationFunctionArgs[i] = -deformationFunctionArgs[i];
-            }
             return new FunctionPolynomial(deformationFunctionArgs);
 
         }
@@ -306,11 +315,11 @@ namespace UI_Library.Code.RDMengine
             float l = distPtStartPtEnd;
             float k = lScrew;
 
-            FunctionPolynomial ftcStartY = this.getDeformationFunctionY(l, k, screwFinalBase.M, screwFinalBase.Z, true, 2);
+            FunctionPolynomial ftcStartY = this.getDeformationFunctionY(l, k, screwFinalBase.N, screwFinalBase.Y, true, 2);
 
             FunctionPolynomial ftcStartZ = this.getDeformationFunctionZ(l, k, screwFinalBase.M, screwFinalBase.Z, true, 2);
 
-            FunctionPolynomial ftcEndY = this.getDeformationFunctionY(l, k, screwFinalBase.M, screwFinalBase.Z, true, 2);
+            FunctionPolynomial ftcEndY = this.getDeformationFunctionY(l, k, screwFinalBase.N, screwFinalBase.Y, false, 2);
 
             FunctionPolynomial ftcEndZ = this.getDeformationFunctionZ(l, k, screwFinalBase.M, screwFinalBase.Z, false, 2);
 
@@ -320,6 +329,9 @@ namespace UI_Library.Code.RDMengine
             {
                 pointResult = ptStartFinalBase.vectorWhithAllCoordinatesEquals(0);
                 //pointResult[0] = X;
+                if (X == 999) {
+                    ;
+                }
                 if (X < lScrew)
                 {
                     pointResult[1] = ftcStartY.calcY(X) / (this.E * this.IGz);
@@ -393,7 +405,7 @@ namespace UI_Library.Code.RDMengine
             List<Point3> newFigure = new List<Point3>();
             foreach (Point3 point in figure)
             {
-                int X, Y, Z;
+                long X, Y, Z;
                 if (up)
                 {
                     X = this.incrementIf(n,this.isHigher(point.X, centerOfGravity.X), point.X);
@@ -414,11 +426,11 @@ namespace UI_Library.Code.RDMengine
         {
             throw new NotImplementedException();
         }
-        private bool isHigher(int X,int Y)
+        private bool isHigher(long X,long Y)
         {
             return X > Y;
         }
-        private int incrementIf(int incremetBy, bool condition,int toIncrement)
+        private long incrementIf(int incremetBy, bool condition,long toIncrement)
         {
             return condition ? toIncrement + incremetBy : toIncrement - incremetBy;
         }

@@ -9,10 +9,10 @@ namespace UI_Library.Code.GestionImage
 {
     public class Point3
     {
-        public int X { get; }
-        public int Y { get; }
-        public int Z { get; }
-        public Point3(int X, int Y, int Z)
+        public long X { get; }
+        public long Y { get; }
+        public long Z { get; }
+        public Point3(long X, long Y, long Z)
         {
             this.X = X;
             this.Y = Y;
@@ -25,7 +25,7 @@ namespace UI_Library.Code.GestionImage
     }
     public class Point2 : Point3
     {
-        public Point2(int X, int Y) : base(X,Y,0)
+        public Point2(long X, long Y) : base(X,Y,0)
         {
         }
     }
