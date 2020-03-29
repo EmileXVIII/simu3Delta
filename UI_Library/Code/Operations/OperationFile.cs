@@ -16,7 +16,7 @@ namespace UI_Library.Code.Operations
             operationFile.changeOppFunction((ref List<float> aOperationFile) => OperationFile<float>.oppFloat(ref aOperationFile, '+'));
             return operationFile;
         }
-        public void Add(T val) { this.operationFile.Add(val); }
+        public OperationFile<T> Add(T val) { this.operationFile.Add(val); return this; }
         public void Clear() { this.operationFile.Clear(); }
         public void Pop() { this.operationFile.RemoveAt(this.operationFile.Count - 1); }
         public OperationFile()

@@ -188,17 +188,13 @@ namespace UI_Library.Code.RDMengine
         private float[] getDeformationFunctionArgsHyperstatismDeg2(float l,float k,float M,float Z,bool start)// bati, screw en B, bati
         {
             //M0=k*Z0/2
-            float stack = (M + k * Z) * (float)Math.Pow(k, 2) / 2;
-            stack -= Z* (float)Math.Pow(k, 3)/6;
-            stack += Z * (float)Math.Pow(l, 3) / 6;
-            stack -= (M + k * Z) * (float)Math.Pow(l, 2) / 2;
-            stack -= (M + k * Z) * l * (k - l);
-            stack += Z * (float)Math.Pow(l, 2) * (k - l);
-            float nbZ0 = -(float)Math.Pow(l, 2) * k / 4;
-            nbZ0 += (float)Math.Pow(l, 3) / 6;
-            nbZ0 += (k - l) * (-k * l/2 + (float)Math.Pow(l, 2) / 2);
-            float Z0 = -stack / nbZ0;
-            float M0 = k * Z0/2;
+            OperationFile<float> oppFile = OperationFile<float>.newOperationFileSum();
+            oppFile.Add(-(float)Math.Pow(l, 3)).Add((float)Math.Pow(k, 3)).Add(3 * k * (float)Math.Pow(l, 2)).Add(-3 * l * (float)Math.Pow(k, 2));
+            float stack = oppFile.doOpp();
+            float Z0 = Z * (stack) / ((float)Math.Pow(k, 3) - stack);
+            float M0 = Z0 * k / 2;
+            float Z1 = Z + Z0;
+            float M1 = Z1 * (k + l) / 2;
             float A, B;
             if (start)
             {
@@ -208,8 +204,8 @@ namespace UI_Library.Code.RDMengine
             }
             else 
             {
-                A = -(M0 + M + k * Z) * l + ((float)Math.Pow(l, 2) / 2) * (Z0 + Z);
-                B = -(M0 + M + k * Z) * ((float)Math.Pow(l, 2) / 2) + ((float)Math.Pow(l, 3) / 6) * (Z0 + Z) - A * l>>>;
+                A = -M1 * l + Z1 * (float)Math.Pow(l, 2) / 2;
+                B = -M1 * (float)Math.Pow(l, 2) / 2 + Z1 * (float)Math.Pow(l, 3) / 6 - A * l;
                 return this.getDeformationFunctionArgsFromFormule(l, k, M0 + M + k * Z, Z0 + Z, A, B);
             }
 
@@ -250,7 +246,7 @@ namespace UI_Library.Code.RDMengine
             return new FunctionPolynomial(deformationFunctionArgs);
 
         }
-        private FunctionPolynomial getDeformationFunctionY(float l, float k, float N, float Y, bool start, int hyperstatism)
+        public FunctionPolynomial getDeformationFunctionY(float l, float k, float N, float Y, bool start, int hyperstatism)
         {
             GetDeformationFunctionArgs getDeformationFunctionArgs = this.getDeformationFunction(hyperstatism);
             float[] deformationFunctionArgs = getDeformationFunctionArgs(l, k, N, Y, start);
@@ -272,7 +268,7 @@ namespace UI_Library.Code.RDMengine
 
             FunctionPolynomial ftcY = this.getDeformationFunctionY(l,0, screwPtStartFinalBase.N, screwPtStartFinalBase.Y,true,0);
 
-            FunctionPolynomial ftcZ = this.getDeformationFunctionZ(l, 0, screwPtStartFinalBase.M, - screwPtStartFinalBase.Z, true, 0);
+            //FunctionPolynomial ftcZ = this.getDeformationFunctionZ(l, 0, screwPtStartFinalBase.M, - screwPtStartFinalBase.Z, true, 0);
 
             FloatVector pointResult = ptStartFinalBase.vectorWhithAllCoordinatesEquals(0);
             float X = ptStartFinalBase[0];
@@ -293,7 +289,7 @@ namespace UI_Library.Code.RDMengine
                 pointResult = ptStartFinalBase.vectorWhithAllCoordinatesEquals(0);
                 //pointResult[0] = X;
                 pointResult[1] = ftcY.calcY(X)/(this.E*this.IGz);
-                pointResult[2] = ftcZ.calcY(X)/ (this.E * this.IGz);
+                //pointResult[2] = ftcZ.calcY(X)/ (this.E * this.IGz);
                 X += 1;
                 figure.Add(projector.projectToOriginalBase(pointResult,false).toPoint3());
             }
@@ -317,11 +313,11 @@ namespace UI_Library.Code.RDMengine
 
             FunctionPolynomial ftcStartY = this.getDeformationFunctionY(l, k, screwFinalBase.N, screwFinalBase.Y, true, 2);
 
-            FunctionPolynomial ftcStartZ = this.getDeformationFunctionZ(l, k, screwFinalBase.M, screwFinalBase.Z, true, 2);
+            //FunctionPolynomial ftcStartZ = this.getDeformationFunctionZ(l, k, screwFinalBase.M, screwFinalBase.Z, true, 2);
 
             FunctionPolynomial ftcEndY = this.getDeformationFunctionY(l, k, screwFinalBase.N, screwFinalBase.Y, false, 2);
 
-            FunctionPolynomial ftcEndZ = this.getDeformationFunctionZ(l, k, screwFinalBase.M, screwFinalBase.Z, false, 2);
+            //FunctionPolynomial ftcEndZ = this.getDeformationFunctionZ(l, k, screwFinalBase.M, screwFinalBase.Z, false, 2);
 
             FloatVector pointResult = ptStartFinalBase.vectorWhithAllCoordinatesEquals(0);
             float X = ptStartFinalBase[0];
@@ -335,12 +331,12 @@ namespace UI_Library.Code.RDMengine
                 if (X < lScrew)
                 {
                     pointResult[1] = ftcStartY.calcY(X) / (this.E * this.IGz);
-                    pointResult[2] = ftcStartZ.calcY(X) / (this.E * this.IGz);
+                    //pointResult[2] = ftcStartZ.calcY(X) / (this.E * this.IGz);
                 }
                 else
                 {
                     pointResult[1] = ftcEndY.calcY(X) / (this.E * this.IGz);
-                    pointResult[2] = ftcEndZ.calcY(X) / (this.E * this.IGz);
+                    //pointResult[2] = ftcEndZ.calcY(X) / (this.E * this.IGz);
                 }
                 X += 1;
                 figure.Add(projector.projectToOriginalBase(pointResult,false).toPoint3());

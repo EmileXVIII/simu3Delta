@@ -45,7 +45,11 @@ namespace UnitTestSimu3Delta.DeformationTests
             figure.Add(new Point2(2000, 2000));
             figure.Add(new Point2(0, 2000));
             RDMengine engine = new RDMengine(figure, 1, 1);
-            Screw screw = new Screw(new float[] { 0, (float)(-5.0 * Math.Pow(10, -8)), 0, 0, 0, 0 }, new Point2(0, 1000).toVector());
+            Screw screw = new Screw(new float[] { 0, (float)(-5.0 * Math.Pow(10, -6)), 0, 0, 0, 0 }, new Point2(0, 1000).toVector());
+           /*Assert.AreEqual(
+                engine.getDeformationFunctionY(2000, 1000, 0, (float)(-5.0 * Math.Pow(10, -8)), true, 2).calcY(1000),
+                engine.getDeformationFunctionY(2000, 1000, 0, (float)(-5.0 * Math.Pow(10, -8)), false, 2).calcY(1000)
+                );*/
             Figure results1 = engine.calculateDeformation(figure[0], figure[1], screw ,null , true);
             show(results1);
             screw = screw.changeApplicationPoint(figure[1].toVector());

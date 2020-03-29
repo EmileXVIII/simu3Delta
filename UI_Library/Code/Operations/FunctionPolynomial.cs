@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UI_Library.Code.Operations
 {
-    class FunctionPolynomial
+    public class FunctionPolynomial
     {
         float[] listFactors;
         public FunctionPolynomial(float[] listFactors)
