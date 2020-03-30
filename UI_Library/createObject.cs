@@ -3,17 +3,22 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UI_Library.Code.Adaptator;
+using UI_Library.Code.Inputs;
 
 namespace UI_Library
 {
     public partial class createObject : Form
     {
-        public createObject()
+        string nameFile;
+        public createObject(string nameFile)
         {
+            this.nameFile = nameFile;
             InitializeComponent();
         }
 
@@ -136,6 +141,13 @@ namespace UI_Library
             txtBoxY.Visible = false;
             txtBoxZ.Visible = false;
 
+            arrowDown.Visible = false;
+            arrowUp.Visible = false;
+
+            checkedListBoxPoints.Visible = false;
+
+            addButton.Visible = false;
+
             butOk.Visible = false;
             butCancel.Visible = false;
         }
@@ -176,8 +188,27 @@ namespace UI_Library
             txtBoxY.Visible = false;
             txtBoxZ.Visible = false;
 
+            arrowDown.Visible = false;
+            arrowUp.Visible = false;
+
+            checkedListBoxPoints.Visible = false;
+
+            addButton.Visible = false;
+
             butOk.Visible = false;
             butCancel.Visible = false;
+
+            string text = "";
+            foreach(string item in checkedListBoxPoints.Items)
+            {
+                text += item;
+                text += '\n';
+            }
+            if (text != "")
+            {
+                File.Delete(Application.StartupPath + @"/" + nameFile);
+                File.WriteAllText(Application.StartupPath + @"/" + nameFile,text);
+            }
         }
 
         private void butMeasurement_Click(object sender, EventArgs e)
@@ -192,8 +223,75 @@ namespace UI_Library
             txtBoxY.Visible = true;
             txtBoxZ.Visible = true;
 
+            arrowDown.Visible = true;
+            arrowUp.Visible = true;
+
+            checkedListBoxPoints.Visible = true;
+
+            addButton.Visible = true;
+
             butOk.Visible = true;
             butCancel.Visible = true;
+        }
+
+        private void addButton_Click(object sender, EventArgs e)
+        {
+            int X, Y, Z;
+            IntImput XImput, YImput, ZImput;
+            XImput = new IntImput(txtBoxX);
+            YImput = new IntImput(txtBoxY);
+            ZImput = new IntImput(txtBoxZ);
+            X = XImput.getValue();
+            Y = YImput.getValue();
+            Z = ZImput.getValue();
+            if (XImput.getConvertionStatus() && YImput.getConvertionStatus() && ZImput.getConvertionStatus())
+            {
+                checkedListBoxPoints.Items.Add("" + X + "," + Y + "," + Z);
+            }
+        }
+
+        private void arrowUp_Click(object sender, EventArgs e)
+        {
+            for (int indItem=1; indItem < checkedListBoxPoints.Items.Count; indItem++)
+            {
+                if(checkedListBoxPoints.CheckedItems.Contains(checkedListBoxPoints.Items[indItem])){
+                    string tempItem = (string)checkedListBoxPoints.Items[indItem-1];
+                    checkedListBoxPoints.Items[indItem - 1] = checkedListBoxPoints.Items[indItem];
+                    checkedListBoxPoints.Items[indItem] = tempItem;
+                    if (!checkedListBoxPoints.GetItemChecked(indItem - 1))
+                    {
+                        checkedListBoxPoints.SetItemChecked(indItem, false);
+                        checkedListBoxPoints.SetItemChecked(indItem - 1, true);
+                    }
+                }
+            }
+        }
+
+        private void arrowDown_Click(object sender, EventArgs e)
+        {
+            for (int indItem = checkedListBoxPoints.Items.Count-2;indItem>=0 ; indItem--)
+            {
+                if (checkedListBoxPoints.CheckedItems.Contains(checkedListBoxPoints.Items[indItem]))
+                {
+                    string tempItem = (string)checkedListBoxPoints.Items[indItem + 1];
+                    checkedListBoxPoints.Items[indItem + 1] = checkedListBoxPoints.Items[indItem];
+                    checkedListBoxPoints.Items[indItem] = tempItem;
+                    if (!checkedListBoxPoints.GetItemChecked(indItem + 1))
+                    {
+                        checkedListBoxPoints.SetItemChecked(indItem, false);
+                        checkedListBoxPoints.SetItemChecked(indItem + 1, true);
+                    }
+                }
+            }
+
+        }
+
+        private void unChekButton_Click(object sender, EventArgs e)
+        {
+            for (int indItem = 0; indItem < checkedListBoxPoints.Items.Count; indItem++)
+            {
+                checkedListBoxPoints.SetItemChecked(indItem, false);
+            }
         }
     }
 }

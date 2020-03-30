@@ -9,7 +9,7 @@ namespace UI_Library
     static class Program
     {
         /// <summary>
-        /// Point d'entrée principal de l'application.
+        /// Point3 d'entrée principal de l'application.
         /// </summary>
         [STAThread]
         static void Main()

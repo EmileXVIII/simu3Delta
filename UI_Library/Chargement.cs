@@ -15,6 +15,7 @@ namespace UI_Library
         public Chargement()
         {
             InitializeComponent();
+            addValuestoListBox();
         }
     }
 }

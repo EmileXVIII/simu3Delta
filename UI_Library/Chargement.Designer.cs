@@ -48,15 +48,6 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(769, 304);
             this.listBox1.TabIndex = 1;
-            // Shutdown the painting of the ListBox as items are added.
-            this.listBox1.BeginUpdate();
-            // Loop through and add 50 items to the ListBox.
-            for (int x = 1; x <= 50; x++)
-            {
-                listBox1.Items.Add("Item " + x.ToString());
-            }
-            // Allow the ListBox to repaint and display the new items.
-            listBox1.EndUpdate();
             // 
             // Chargement
             // 
@@ -72,6 +63,18 @@
         }
 
         #endregion
+        private void addValuestoListBox()
+        {
+            // Shutdown the painting of the ListBox as items are added.
+            this.listBox1.BeginUpdate();
+            // Loop through and add 50 items to the ListBox.
+            for (int x = 1; x <= 50; x++)
+            {
+                listBox1.Items.Add("Item " + x.ToString());
+            }
+            // Allow the ListBox to repaint and display the new items.
+            listBox1.EndUpdate();
+        }
 
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.ListBox listBox1;
