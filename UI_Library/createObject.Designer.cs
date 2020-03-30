@@ -162,7 +162,6 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fichierToolStripMenuItem,
@@ -459,6 +458,7 @@
             this.unChekButton.TabIndex = 24;
             this.unChekButton.Text = "UnCheck All";
             this.unChekButton.UseVisualStyleBackColor = true;
+            this.unChekButton.Visible = false;
             this.unChekButton.Click += new System.EventHandler(this.unChekButton_Click);
             // 
             // createObject

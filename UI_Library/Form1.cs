@@ -45,10 +45,14 @@ namespace UI_Library
         private void buttonTest_Click(object sender, EventArgs e)
         {
             string nameFile = textBoxFileName.Text;
-            Bitmap myImg = new PictureFromScatterPlot().Convert(5000,5000);
+            Figure figure = new Figure();
+            figure.setNameFile(nameFile);
+            PictureFromScatterPlot picturefromScatterPlot = new PictureFromScatterPlot();
+            picturefromScatterPlot.myFigure = figure;
+            Bitmap myImg = picturefromScatterPlot.Convert(5000,5000);
             try
             {
-                myImg.Save(Application.StartupPath + @"\" + nameFile);
+                myImg.Save(Application.StartupPath + @"\" + nameFile + ".png");
             }
             catch
             {
@@ -57,7 +61,7 @@ namespace UI_Library
             Form frm = new Form();
             frm.Show();
             PictureBox PictureBox2 = new PictureBox();
-            PictureBox2.Image = Image.FromFile(Application.StartupPath+@"\"+nameFile);
+            PictureBox2.Image = Image.FromFile(Application.StartupPath+@"\"+nameFile+".png");
             PictureBox2.Show();
             frm.Controls.Add(PictureBox2);
             PictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;

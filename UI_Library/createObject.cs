@@ -150,6 +150,8 @@ namespace UI_Library
 
             butOk.Visible = false;
             butCancel.Visible = false;
+
+            unChekButton.Visible = false;
         }
 
         private void butOk_Click(object sender, EventArgs e)
@@ -198,6 +200,8 @@ namespace UI_Library
             butOk.Visible = false;
             butCancel.Visible = false;
 
+            unChekButton.Visible = false;
+
             string text = "";
             foreach(string item in checkedListBoxPoints.Items)
             {
@@ -232,6 +236,8 @@ namespace UI_Library
 
             butOk.Visible = true;
             butCancel.Visible = true;
+
+            unChekButton.Visible = true;
         }
 
         private void addButton_Click(object sender, EventArgs e)

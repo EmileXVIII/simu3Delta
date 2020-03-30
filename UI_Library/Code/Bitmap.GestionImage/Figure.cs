@@ -6,11 +6,21 @@ using System.Threading.Tasks;
 using System.IO;
 using UI_Library.Code.Exceptions;
 using UI_Library.Code.Operations;
+using System.Windows.Forms;
 
 namespace UI_Library.Code.GestionImage
 {
     public class Figure : List<Point3>
     {
+        private string namefile;
+        public void setNameFile(string namefile)
+        {
+            this.namefile = namefile;
+        }
+        public string getNameFile()
+        {
+            return this.namefile;
+        }
         public Figure slice(int indStart, int indEnd=-1)
         {
             if (indEnd == -1) indEnd = this.Count;
@@ -40,7 +50,7 @@ namespace UI_Library.Code.GestionImage
         }
         public void readFile()
         {
-            StreamReader file = new StreamReader(@"C:/emile.dir/perso/Ynov/projets/Simu3DeltaC#/monfichier.txt");
+            StreamReader file = new StreamReader(Application.StartupPath + @"\" + this.getNameFile() + ".txt");
             string line = file.ReadLine(); ;
             while (line != null)
             {

@@ -9,11 +9,14 @@ namespace UI_Library.Code.GestionImage
 {
     public class PictureFromScatterPlot
     {
+        public PictureFromScatterPlot()
+        {
+            this.myFigure = new Figure();
+        }
 
         public Figure myFigure { get; set; }
         public System.Drawing.Bitmap Convert(int width, int hight)
         {
-            this.myFigure = new Figure();
             this.myFigure.readFile();
             int abscisse = 0;
             int ordonnee = 0;
