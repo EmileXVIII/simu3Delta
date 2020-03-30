@@ -43,6 +43,8 @@
             this.subrunSimulationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonTest = new System.Windows.Forms.Button();
             this.but = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.barMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -68,7 +70,7 @@
             this.subfileNewToolStripMenuItem,
             this.subfileOpenToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(54, 29);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(54, 50);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // subfileNewToolStripMenuItem
@@ -77,20 +79,20 @@
             this.subfileSubnewObjectToolStripMenuItem,
             this.subfileSubnewSimulationToolStripMenuItem});
             this.subfileNewToolStripMenuItem.Name = "subfileNewToolStripMenuItem";
-            this.subfileNewToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.subfileNewToolStripMenuItem.Size = new System.Drawing.Size(158, 34);
             this.subfileNewToolStripMenuItem.Text = "New";
             // 
             // subfileSubnewObjectToolStripMenuItem
             // 
             this.subfileSubnewObjectToolStripMenuItem.Name = "subfileSubnewObjectToolStripMenuItem";
-            this.subfileSubnewObjectToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.subfileSubnewObjectToolStripMenuItem.Size = new System.Drawing.Size(198, 34);
             this.subfileSubnewObjectToolStripMenuItem.Text = "Object";
             this.subfileSubnewObjectToolStripMenuItem.Click += new System.EventHandler(this.subfileSubnewObjectToolStripMenuItem_Click);
             // 
             // subfileSubnewSimulationToolStripMenuItem
             // 
             this.subfileSubnewSimulationToolStripMenuItem.Name = "subfileSubnewSimulationToolStripMenuItem";
-            this.subfileSubnewSimulationToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.subfileSubnewSimulationToolStripMenuItem.Size = new System.Drawing.Size(198, 34);
             this.subfileSubnewSimulationToolStripMenuItem.Text = "Simulation";
             // 
             // subfileOpenToolStripMenuItem
@@ -99,39 +101,39 @@
             this.subfileSubopenObjectToolStripMenuItem,
             this.subfileSubopenSimulationToolStripMenuItem});
             this.subfileOpenToolStripMenuItem.Name = "subfileOpenToolStripMenuItem";
-            this.subfileOpenToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.subfileOpenToolStripMenuItem.Size = new System.Drawing.Size(158, 34);
             this.subfileOpenToolStripMenuItem.Text = "Open";
             // 
             // subfileSubopenObjectToolStripMenuItem
             // 
             this.subfileSubopenObjectToolStripMenuItem.Name = "subfileSubopenObjectToolStripMenuItem";
-            this.subfileSubopenObjectToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.subfileSubopenObjectToolStripMenuItem.Size = new System.Drawing.Size(198, 34);
             this.subfileSubopenObjectToolStripMenuItem.Text = "Object";
             this.subfileSubopenObjectToolStripMenuItem.Click += new System.EventHandler(this.subfileSubopenObjectToolStripMenuItem_Click);
             // 
             // subfileSubopenSimulationToolStripMenuItem
             // 
             this.subfileSubopenSimulationToolStripMenuItem.Name = "subfileSubopenSimulationToolStripMenuItem";
-            this.subfileSubopenSimulationToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.subfileSubopenSimulationToolStripMenuItem.Size = new System.Drawing.Size(198, 34);
             this.subfileSubopenSimulationToolStripMenuItem.Text = "Simulation";
             this.subfileSubopenSimulationToolStripMenuItem.Click += new System.EventHandler(this.subfileSubopenSimulationToolStripMenuItem_Click);
             // 
             // editionToolStripMenuItem
             // 
             this.editionToolStripMenuItem.Name = "editionToolStripMenuItem";
-            this.editionToolStripMenuItem.Size = new System.Drawing.Size(83, 29);
+            this.editionToolStripMenuItem.Size = new System.Drawing.Size(83, 50);
             this.editionToolStripMenuItem.Text = "Edition";
             // 
             // affichageToolStripMenuItem
             // 
             this.affichageToolStripMenuItem.Name = "affichageToolStripMenuItem";
-            this.affichageToolStripMenuItem.Size = new System.Drawing.Size(103, 29);
+            this.affichageToolStripMenuItem.Size = new System.Drawing.Size(103, 50);
             this.affichageToolStripMenuItem.Text = "Affichage";
             // 
             // projetToolStripMenuItem
             // 
             this.projetToolStripMenuItem.Name = "projetToolStripMenuItem";
-            this.projetToolStripMenuItem.Size = new System.Drawing.Size(74, 29);
+            this.projetToolStripMenuItem.Size = new System.Drawing.Size(74, 50);
             this.projetToolStripMenuItem.Text = "Projet";
             // 
             // runToolStripMenuItem
@@ -139,24 +141,24 @@
             this.runToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.subrunSimulationToolStripMenuItem});
             this.runToolStripMenuItem.Name = "runToolStripMenuItem";
-            this.runToolStripMenuItem.Size = new System.Drawing.Size(59, 29);
+            this.runToolStripMenuItem.Size = new System.Drawing.Size(59, 50);
             this.runToolStripMenuItem.Text = "Run";
             // 
             // subrunSimulationToolStripMenuItem
             // 
             this.subrunSimulationToolStripMenuItem.Name = "subrunSimulationToolStripMenuItem";
-            this.subrunSimulationToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.subrunSimulationToolStripMenuItem.Size = new System.Drawing.Size(198, 34);
             this.subrunSimulationToolStripMenuItem.Text = "Simulation";
             this.subrunSimulationToolStripMenuItem.Click += new System.EventHandler(this.subrunSimulationToolStripMenuItem_Click);
             // 
             // buttonTest
             // 
-            this.buttonTest.Location = new System.Drawing.Point(222, 283);
+            this.buttonTest.Location = new System.Drawing.Point(64, 215);
             this.buttonTest.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonTest.Name = "buttonTest";
-            this.buttonTest.Size = new System.Drawing.Size(424, 166);
+            this.buttonTest.Size = new System.Drawing.Size(203, 101);
             this.buttonTest.TabIndex = 1;
-            this.buttonTest.Text = "buttonTest";
+            this.buttonTest.Text = "test Création Image";
             this.buttonTest.UseVisualStyleBackColor = true;
             this.buttonTest.Click += new System.EventHandler(this.buttonTest_Click);
             // 
@@ -174,11 +176,33 @@
     "chier/Nouveau/Objet";
             this.but.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(625, 215);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(203, 101);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Test déformation 1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(344, 215);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(202, 101);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "Test déformation 2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(916, 692);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.but);
             this.Controls.Add(this.buttonTest);
             this.Controls.Add(this.barMenuStrip);
@@ -211,6 +235,8 @@
         private System.Windows.Forms.ToolStripMenuItem subfileSubopenSimulationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem runToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem subrunSimulationToolStripMenuItem;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
 

@@ -11,13 +11,13 @@ namespace UI_Library.Code.GestionImage
     {
 
         public Figure myFigure { get; set; }
-        public Bitmap Convert(int width, int hight)
+        public System.Drawing.Bitmap Convert(int width, int hight)
         {
             this.myFigure = new Figure();
             this.myFigure.readFile();
             int abscisse = 0;
             int ordonnee = 0;
-            Bitmap myBitmap = new Bitmap(width, hight);
+            System.Drawing.Bitmap myBitmap = new System.Drawing.Bitmap(width, hight);
             for (abscisse = 0 ; abscisse < width ; abscisse++)
             {
                 for (ordonnee = 0 ; ordonnee < hight ; ordonnee++)
@@ -33,7 +33,7 @@ namespace UI_Library.Code.GestionImage
                     myBitmap.SetPixel(abscisse, ordonnee, colorPixel);
                 }
             }
-            myBitmap.Save(@"C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\myImg.png");
+            //myBitmap.Save(@"C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\myImg.png");
             return myBitmap;
         }
         public bool isIn(int X, int Y)

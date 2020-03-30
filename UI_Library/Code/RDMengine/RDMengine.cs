@@ -250,6 +250,10 @@ namespace UI_Library.Code.RDMengine
         {
             GetDeformationFunctionArgs getDeformationFunctionArgs = this.getDeformationFunction(hyperstatism);
             float[] deformationFunctionArgs = getDeformationFunctionArgs(l, k, N, Y, start);
+            for (int i = 0; i < deformationFunctionArgs.Length; i++)
+            {
+                deformationFunctionArgs[i] = -deformationFunctionArgs[i];
+            }
             return new FunctionPolynomial(deformationFunctionArgs);
 
         }

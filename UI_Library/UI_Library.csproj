@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Code\Bitmap.GestionImage\CouplePtSort.cs" />
+    <Compile Include="Code\Bitmap.GestionImage\IPoint.cs" />
     <Compile Include="Code\Bitmap.GestionImage\Point.cs" />
     <Compile Include="Code\Bitmap.GestionImage\FtcLine.cs" />
     <Compile Include="Code\Bitmap.GestionImage\PtUpAndDown.cs" />
@@ -111,6 +112,12 @@
     <Compile Include="Chargement.Designer.cs">
       <DependentUpon>Chargement.cs</DependentUpon>
     </Compile>
+    <Compile Include="graph.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="graph.Designer.cs">
+      <DependentUpon>graph.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Chargement.resx">
@@ -124,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AlertOpen.resx">
       <DependentUpon>AlertOpen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="graph.resx">
+      <DependentUpon>graph.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

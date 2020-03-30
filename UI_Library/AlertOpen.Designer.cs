@@ -59,9 +59,9 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(785, 80);
             this.label1.TabIndex = 2;
-            this.label1.Text = "You atempt to open a file. \nDo you want to edit the file or use it as a model?";
+            this.label1.Text = "You attempt to open a file. \nDo you want to edit the file or use it as a model?";
             // 
-            // Form2
+            // AlertOpen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -69,7 +69,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.buttonTest);
-            this.Name = "Form2";
+            this.Name = "AlertOpen";
             this.Text = "Alert";
             this.ResumeLayout(false);
             this.PerformLayout();
