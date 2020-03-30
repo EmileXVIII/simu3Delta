@@ -50,9 +50,9 @@
             this.lblX = new System.Windows.Forms.Label();
             this.lblY = new System.Windows.Forms.Label();
             this.lblZ = new System.Windows.Forms.Label();
-            this.txtBoxX = new System.Windows.Forms.TextBox();
-            this.txtBoxY = new System.Windows.Forms.TextBox();
-            this.txtBoxZ = new System.Windows.Forms.TextBox();
+            this.txtBoxX = new UI_Library.Code.Adaptator.TextBoxImputable();
+            this.txtBoxY = new UI_Library.Code.Adaptator.TextBoxImputable();
+            this.txtBoxZ = new UI_Library.Code.Adaptator.TextBoxImputable();
             this.checkedListBoxPoints = new System.Windows.Forms.CheckedListBox();
             this.arrowDown = new System.Windows.Forms.Button();
             this.arrowUp = new System.Windows.Forms.Button();
@@ -161,7 +161,6 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fichierToolStripMenuItem,
@@ -377,6 +376,7 @@
             this.arrowDown.TabIndex = 22;
             this.arrowDown.UseVisualStyleBackColor = true;
             this.arrowDown.Visible = false;
+            this.arrowDown.Click += new System.EventHandler(this.arrowDown_Click);
             // 
             // arrowUp
             // 
@@ -388,6 +388,7 @@
             this.arrowUp.TabIndex = 0;
             this.arrowUp.UseVisualStyleBackColor = false;
             this.arrowUp.Visible = false;
+            this.arrowUp.Click += new System.EventHandler(this.arrowUp_Click);
             // 
             // pctBoxShuriken
             // 
@@ -567,9 +568,9 @@
         private System.Windows.Forms.Label lblX;
         private System.Windows.Forms.Label lblY;
         private System.Windows.Forms.Label lblZ;
-        private System.Windows.Forms.TextBox txtBoxX;
-        private System.Windows.Forms.TextBox txtBoxY;
-        private System.Windows.Forms.TextBox txtBoxZ;
+        private Code.Adaptator.TextBoxImputable txtBoxX;
+        private Code.Adaptator.TextBoxImputable txtBoxY;
+        private Code.Adaptator.TextBoxImputable txtBoxZ;
         private System.Windows.Forms.CheckedListBox checkedListBoxPoints;
         private System.Windows.Forms.Button arrowUp;
         private System.Windows.Forms.Button arrowDown;

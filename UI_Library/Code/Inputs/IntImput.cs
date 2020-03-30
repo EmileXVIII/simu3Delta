@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace UI_Library.Code.Inputs
 {
-    class IntImput:IImput<int>
+    class IntImput:IInput<int>
     {
         private bool check;
         private string text;
         private int textToInt;
-        private System.Windows.Forms.TextBox textBox;
-        public IntImput(System.Windows.Forms.TextBox textBox)
+        private IInputable textBox;
+        public IntImput(IInputable textBox)
         {
             this.check = true;
             this.text = "";
@@ -28,7 +28,6 @@ namespace UI_Library.Code.Inputs
         {
             try
             {
-                reloadText();
                 textToInt = int.Parse(text);
                 this.check = true;
                 this.textBox.BackColor = System.Drawing.Color.White;

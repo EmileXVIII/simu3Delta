@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace UI_Library.Code.Inputs
 {
-    public class FloatImput : IImput<float>
+    public class FloatInput : IInput<float>
     {
         private bool check;
         private string text;
         private float textToFloat;
-        private System.Windows.Forms.TextBox textBox;
-        public FloatImput(System.Windows.Forms.TextBox textBox)
+        private IInputable textBox;
+        public FloatInput(IInputable textBox)
         {
             this.check = true;
             this.text = "";

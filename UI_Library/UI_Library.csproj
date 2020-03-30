@@ -61,6 +61,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Code\Adaptator\TextBoxImputable.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Code\Bitmap.GestionImage\CouplePtSort.cs" />
     <Compile Include="Code\Bitmap.GestionImage\IPoint.cs" />
     <Compile Include="Code\Bitmap.GestionImage\Point.cs" />
@@ -71,9 +74,10 @@
     <Compile Include="Code\CrashObject\CrashObject.cs" />
     <Compile Include="Code\Exceptions\NoApplicationPointException.cs" />
     <Compile Include="Code\Exceptions\NotInFigureExeption.cs" />
-    <Compile Include="Code\Inputs\IImput.cs" />
+    <Compile Include="Code\Inputs\IInput.cs" />
+    <Compile Include="Code\Inputs\IInputable.cs" />
     <Compile Include="Code\Inputs\IntImput.cs" />
-    <Compile Include="Code\Inputs\FloatImput.cs" />
+    <Compile Include="Code\Inputs\FloatInput.cs" />
     <Compile Include="Code\Objects\ListWhithPermutations.cs" />
     <Compile Include="Code\Objects\Projector.cs" />
     <Compile Include="Code\Objects\Convertor.cs" />

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UI_Library.Code.Inputs
 {
-    interface IImput<T>
+    interface IInput<T>
     {
         void reloadText();
         bool getConvertionStatus();

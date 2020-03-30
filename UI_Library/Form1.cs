@@ -14,6 +14,7 @@ using UI_Library.Code.RDMengine;
 using System.Windows.Forms.DataVisualization.Charting;
 using UI_Library.Code.Objects;
 using UI_Library.Code.Inputs;
+using UI_Library.Code.Adaptator;
 
 namespace UI_Library
 {
@@ -98,7 +99,7 @@ namespace UI_Library
         private void button1_Click(object sender, EventArgs e)
         {
 
-            FloatImput imput = new FloatImput(this.textBox2);
+            FloatInput imput = new FloatInput((TextBoxImputable)this.textBox2);
             float strenght = imput.getValue();
             if(imput.getConvertionStatus())
             {
@@ -113,7 +114,7 @@ namespace UI_Library
 
         private void button2_Click(object sender, EventArgs e)
         {
-            FloatImput imput = new FloatImput(this.textBox1);
+            FloatInput imput = new FloatInput((TextBoxImputable)this.textBox1);
             float strenght = imput.getValue();
             if (imput.getConvertionStatus())
             {

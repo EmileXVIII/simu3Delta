@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UI_Library.Code.Adaptator;
+using UI_Library.Code.Inputs;
 
 namespace UI_Library
 {
@@ -219,16 +221,54 @@ namespace UI_Library
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            float X, Y, Z;
-            try
+            int X, Y, Z;
+            IntImput XImput, YImput, ZImput;
+            XImput = new IntImput(txtBoxX);
+            YImput = new IntImput(txtBoxY);
+            ZImput = new IntImput(txtBoxZ);
+            X = XImput.getValue();
+            Y = YImput.getValue();
+            Z = ZImput.getValue();
+            if (XImput.getConvertionStatus() && YImput.getConvertionStatus() && ZImput.getConvertionStatus())
             {
-                X = float.Parse(lblX.Text);
-                lblX.BackColor = System.Drawing.Color.White;
+                checkedListBoxPoints.Items.Add("" + X + "," + Y + "," + Z);
             }
-            catch
+        }
+
+        private void arrowUp_Click(object sender, EventArgs e)
+        {
+            for (int indItem=1; indItem < checkedListBoxPoints.Items.Count; indItem++)
             {
-                lblX.BackColor = System.Drawing.Color.White;
+                if(checkedListBoxPoints.CheckedItems.Contains(checkedListBoxPoints.Items[indItem])){
+                    string tempItem = (string)checkedListBoxPoints.Items[indItem-1];
+                    checkedListBoxPoints.Items[indItem - 1] = checkedListBoxPoints.Items[indItem];
+                    checkedListBoxPoints.Items[indItem] = tempItem;
+                    if (!checkedListBoxPoints.GetItemChecked(indItem - 1))
+                    {
+                        checkedListBoxPoints.SetItemChecked(indItem, false);
+                        checkedListBoxPoints.SetItemChecked(indItem - 1, true);
+                    }
+                }
             }
+        }
+
+        private void arrowDown_Click(object sender, EventArgs e)
+        {
+            for (int indItem = checkedListBoxPoints.Items.Count-2;indItem>=0 ; indItem--)
+            {
+                if (checkedListBoxPoints.CheckedItems.Contains(checkedListBoxPoints.Items[indItem]))
+                {
+                    string tempItem = (string)checkedListBoxPoints.Items[indItem + 1];
+                    checkedListBoxPoints.Items[indItem + 1] = checkedListBoxPoints.Items[indItem];
+                    checkedListBoxPoints.Items[indItem] = tempItem;
+                    if (!checkedListBoxPoints.GetItemChecked(indItem + 1))
+                    {
+                        checkedListBoxPoints.SetItemChecked(indItem, false);
+                        checkedListBoxPoints.SetItemChecked(indItem + 1, true);
+                    }
+                }
+            }
+
         }
     }
 }

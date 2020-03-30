@@ -22,13 +22,13 @@ namespace UI_Library.Code.RDMengine
         public Figure figure { get; set; }
         float IGz;
         float E;
-        public RDMengine(Figure figure,float IGz,float E)
+        public RDMengine(Figure figure, float IGz, float E)
         {
             this.figure = figure;
             this.IGz = IGz;
             this.E = E;
         }
-        private Point3 getPt(bool start,bool right,int posPtAround,int nbBoucles,int rightIncrement,Figure figure)
+        private Point3 getPt(bool start, bool right, int posPtAround, int nbBoucles, int rightIncrement, Figure figure)
         {
             int posPtAroundSubstractPosPtStart = start ? nbBoucles - 1 : nbBoucles;
             int increment = right ? rightIncrement : -rightIncrement;
@@ -42,7 +42,7 @@ namespace UI_Library.Code.RDMengine
             if (ptsAround == null) throw new NotInFigureExeption();
             FloatVector directorPtAround = ptsAround[1].toVector().substract(ptsAround[0].toVector()).normalize();
             FloatVector ptOnFigure = ptsAround[0].toVector().add(directorPtAround.multiplyByScalar(screw.aplicationPoint.scalarProduct(directorPtAround)));
-            Screw screwOnFigure = Screw.fromWrenchAndTwist(screw.getWrench(), screw.getTwist(),ptOnFigure);
+            Screw screwOnFigure = Screw.fromWrenchAndTwist(screw.getWrench(), screw.getTwist(), ptOnFigure);
             List<Figure> listMoves = new List<Figure>();
             listMoves.Add(this.calculateDeformation(ptsAround[0], ptsAround[1], screwOnFigure, null, true));
             Point3 ptmax = this.getFarestPoint(screwOnFigure);
@@ -53,16 +53,16 @@ namespace UI_Library.Code.RDMengine
             int nbBoucles = 1;
             List<Point3[]> ptsUsedToCalc = new List<Point3[]>();
             ptsUsedToCalc.Add(ptsAround);
-            while (!endLeft||!endRight)
+            while (!endLeft || !endRight)
             {
                 Point3 ptStart, ptEnd;
-                foreach (bool right in new bool[]{ true, false})
+                foreach (bool right in new bool[] { true, false })
                 {
                     int indRef = right ? 1 : 0;
                     ptStart = this.getPt(true, right, posPtsAround[indRef], nbBoucles, increment, this.figure);
                     ptEnd = this.getPt(false, right, posPtsAround[indRef], nbBoucles, increment, this.figure);
                     ptsUsedToCalc.Add(new Point3[] { ptStart, ptEnd });
-                    listMoves.Add((right?endRight:endLeft)? null : this.calculateDeformation(ptStart, ptEnd, null, screwOnFigure.changeApplicationPoint(ptStart.toVector()), false));
+                    listMoves.Add((right ? endRight : endLeft) ? null : this.calculateDeformation(ptStart, ptEnd, null, screwOnFigure.changeApplicationPoint(ptStart.toVector()), false));
                     if (ptEnd == ptmax)
                     {
                         if (right)
@@ -75,15 +75,15 @@ namespace UI_Library.Code.RDMengine
                 i += 2;
                 nbBoucles++;
             }
-            this.figure = this.getNewFigure(this.figure, listMoves,ptsUsedToCalc, ptmax);
+            this.figure = this.getNewFigure(this.figure, listMoves, ptsUsedToCalc, ptmax);
         }
-        private Figure getNewFigure(Figure oldFigure,List<Figure> listMoves, List<Point3[]> ptsUsedToCalc, Point3 ptmax)
+        private Figure getNewFigure(Figure oldFigure, List<Figure> listMoves, List<Point3[]> ptsUsedToCalc, Point3 ptmax)
         {
             int indWhereWeAreInList = listMoves.Count - 1;
             int indStart = oldFigure.IndexOf(ptmax);
             Figure newFigure1 = new Figure();
             Figure newFigure2 = new Figure();
-            List<Point3> toApply1= new List<Point3>();
+            List<Point3> toApply1 = new List<Point3>();
             List<Point3> toApply2 = new List<Point3>();
             while (indWhereWeAreInList != 0)
             {
@@ -119,7 +119,7 @@ namespace UI_Library.Code.RDMengine
             this.calculateNextNewFigurePart(ref newFigure1, 0, listMovesRight, ptsUsedToCalcRight, ref toApply1);
             this.calculateNextNewFigurePart(ref newFigure2, 0, listMovesLeft, ptsUsedToCalcLeft, ref toApply2);
             newFigure2.Reverse();
-            foreach(Point3 point in newFigure2)
+            foreach (Point3 point in newFigure2)
             {
                 newFigure1.Add(point);
             }
@@ -153,17 +153,17 @@ namespace UI_Library.Code.RDMengine
             }
             while (checkPoint.toVector().isEquals(ptEnd.toVector()));
             tempsFigure.Reverse();
-            foreach(Point3 point in tempsFigure)
+            foreach (Point3 point in tempsFigure)
             {
                 newFigure.Add(point);
             }
             toApply.Add(moves[0]);
         }
-        public Figure calculateDeformation(Point3 ptStart,Point3 ptEnd,Screw screw,Screw screwPtStart,bool firstStep)
+        public Figure calculateDeformation(Point3 ptStart, Point3 ptEnd, Screw screw, Screw screwPtStart, bool firstStep)
         {
             if (!firstStep)
             {
-                return normalDeformation(ptStart,ptEnd,screwPtStart);
+                return normalDeformation(ptStart, ptEnd, screwPtStart);
             }
             else
             {
@@ -174,7 +174,7 @@ namespace UI_Library.Code.RDMengine
         {
             float A = -M0 * l + Z0 * (float)Math.Pow(l, 2) / 2;
             float B = -M0 * (float)Math.Pow(l, 2) / 2 + (float)Math.Pow(l, 3) * Z0 / 6 - A * l;
-            return getDeformationFunctionArgsFromFormule(l,k,M0,Z0,A,B);
+            return getDeformationFunctionArgsFromFormule(l, k, M0, Z0, A, B);
 
         }
         private float[] getDeformationFunctionArgsHyperstatismDeg1(float l, float k, float M0, float B, bool start)// screw en A, y en A ou z en A , bati
@@ -185,7 +185,7 @@ namespace UI_Library.Code.RDMengine
             return getDeformationFunctionArgsFromFormule(l, k, M0, Z0, A, B);
 
         }
-        private float[] getDeformationFunctionArgsHyperstatismDeg2(float l,float k,float M,float Z,bool start)// bati, screw en B, bati
+        private float[] getDeformationFunctionArgsHyperstatismDeg2(float l, float k, float M, float Z, bool start)// bati, screw en B, bati
         {
             //M0=k*Z0/2
             OperationFile<float> oppFile = OperationFile<float>.newOperationFileSum();
@@ -202,7 +202,7 @@ namespace UI_Library.Code.RDMengine
                 B = 0;
                 return this.getDeformationFunctionArgsFromFormule(l, k, M0, Z0, A, B);
             }
-            else 
+            else
             {
                 A = -M1 * l + Z1 * (float)Math.Pow(l, 2) / 2;
                 B = -M1 * (float)Math.Pow(l, 2) / 2 + Z1 * (float)Math.Pow(l, 3) / 6 - A * l;
