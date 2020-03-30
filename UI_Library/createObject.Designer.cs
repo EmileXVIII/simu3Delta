@@ -64,6 +64,7 @@
             this.pctBoxCarre = new System.Windows.Forms.PictureBox();
             this.pctBoxCreate = new System.Windows.Forms.PictureBox();
             this.addButton = new System.Windows.Forms.Button();
+            this.unChekButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctBoxShuriken)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctBoxCercle)).BeginInit();
@@ -161,6 +162,7 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fichierToolStripMenuItem,
@@ -320,47 +322,6 @@
             // checkedListBoxPoints
             // 
             this.checkedListBoxPoints.FormattingEnabled = true;
-            this.checkedListBoxPoints.Items.AddRange(new object[] {
-            "12;3;5",
-            "55;85;0",
-            "12;3;5",
-            "55;85;0",
-            "12;3;5",
-            "55;85;0",
-            "12;3;5",
-            "55;85;0",
-            "12;3;5",
-            "55;85;0",
-            "12;3;5",
-            "55;85;0",
-            "12;3;5",
-            "55;85;0",
-            "12;3;5",
-            "55;85;0",
-            "12;3;5",
-            "55;85;0",
-            "12;3;5",
-            "55;85;0",
-            "12;3;5",
-            "55;85;0",
-            "12;3;5",
-            "55;85;0",
-            "12;3;5",
-            "55;85;0",
-            "12;3;5",
-            "55;85;0",
-            "12;3;5",
-            "55;85;0",
-            "12;3;5",
-            "55;85;0",
-            "12;3;5",
-            "55;85;0",
-            "12;3;5",
-            "55;85;0",
-            "12;3;5",
-            "55;85;0",
-            "12;3;5",
-            "55;85;0"});
             this.checkedListBoxPoints.Location = new System.Drawing.Point(1710, 642);
             this.checkedListBoxPoints.Name = "checkedListBoxPoints";
             this.checkedListBoxPoints.Size = new System.Drawing.Size(393, 280);
@@ -490,11 +451,22 @@
             this.addButton.Visible = false;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
+            // unChekButton
+            // 
+            this.unChekButton.Location = new System.Drawing.Point(2123, 755);
+            this.unChekButton.Name = "unChekButton";
+            this.unChekButton.Size = new System.Drawing.Size(138, 44);
+            this.unChekButton.TabIndex = 24;
+            this.unChekButton.Text = "UnCheck All";
+            this.unChekButton.UseVisualStyleBackColor = true;
+            this.unChekButton.Click += new System.EventHandler(this.unChekButton_Click);
+            // 
             // createObject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2334, 1043);
+            this.Controls.Add(this.unChekButton);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.arrowDown);
             this.Controls.Add(this.arrowUp);
@@ -575,5 +547,6 @@
         private System.Windows.Forms.Button arrowUp;
         private System.Windows.Forms.Button arrowDown;
         private System.Windows.Forms.Button addButton;
+        private System.Windows.Forms.Button unChekButton;
     }
 }

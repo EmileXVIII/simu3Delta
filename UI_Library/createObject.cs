@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,8 +15,10 @@ namespace UI_Library
 {
     public partial class createObject : Form
     {
-        public createObject()
+        string nameFile;
+        public createObject(string nameFile)
         {
+            this.nameFile = nameFile;
             InitializeComponent();
         }
 
@@ -194,6 +197,18 @@ namespace UI_Library
 
             butOk.Visible = false;
             butCancel.Visible = false;
+
+            string text = "";
+            foreach(string item in checkedListBoxPoints.Items)
+            {
+                text += item;
+                text += '\n';
+            }
+            if (text != "")
+            {
+                File.Delete(Application.StartupPath + @"/" + nameFile);
+                File.WriteAllText(Application.StartupPath + @"/" + nameFile,text);
+            }
         }
 
         private void butMeasurement_Click(object sender, EventArgs e)
@@ -269,6 +284,14 @@ namespace UI_Library
                 }
             }
 
+        }
+
+        private void unChekButton_Click(object sender, EventArgs e)
+        {
+            for (int indItem = 0; indItem < checkedListBoxPoints.Items.Count; indItem++)
+            {
+                checkedListBoxPoints.SetItemChecked(indItem, false);
+            }
         }
     }
 }

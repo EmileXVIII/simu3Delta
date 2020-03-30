@@ -47,3 +47,8 @@ C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\UI_Library\obj\Debug\UI_Library.exe
 C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\UI_Library\obj\Debug\UI_Library.pdb
 C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\UI_Library\obj\Debug\UI_Library.csprojAssemblyReference.cache
 C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\UI_Library\obj\Debug\UI_Library.graph.resources
+C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\UI_Library\obj\Debug\UI_Library.Form3.resources
+C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\UI_Library\bin\Debug\Plugin.FilePicker.dll
+C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\UI_Library\bin\Debug\Plugin.FilePicker.pdb
+C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\UI_Library\bin\Debug\Plugin.FilePicker.xml
+C:\emile.dir\perso\Ynov\projets\Simu3DeltaC#\UI_Library\obj\Debug\XamlC.stamp

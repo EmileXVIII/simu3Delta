@@ -44,7 +44,7 @@ namespace UI_Library
 
         private void buttonTest_Click(object sender, EventArgs e)
         {
-            string nameFile = textBox3.Text;
+            string nameFile = textBoxFileName.Text;
             Bitmap myImg = new PictureFromScatterPlot().Convert(5000,5000);
             try
             {
@@ -74,7 +74,7 @@ namespace UI_Library
 
         private void subfileSubnewObjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            createObject createObject = new createObject();
+            createObject createObject = new createObject(textBoxFileName.Text);
             createObject.Show();
         }
 
@@ -99,7 +99,7 @@ namespace UI_Library
         private void button1_Click(object sender, EventArgs e)
         {
 
-            FloatInput imput = new FloatInput((TextBoxImputable)this.textBox2);
+            FloatInput imput = new FloatInput((TextBoxImputable)this.textBoxTest1);
             float strenght = imput.getValue();
             if(imput.getConvertionStatus())
             {
@@ -114,7 +114,7 @@ namespace UI_Library
 
         private void button2_Click(object sender, EventArgs e)
         {
-            FloatInput imput = new FloatInput((TextBoxImputable)this.textBox1);
+            FloatInput imput = new FloatInput((TextBoxImputable)this.textBoxTest2);
             float strenght = imput.getValue();
             if (imput.getConvertionStatus())
             {
@@ -132,11 +132,6 @@ namespace UI_Library
                 Figure results1 = engine.calculateDeformation(figure[0], figure[1], screw, null, true);
                 show(results1);
             }
-        }
-
-        private void textBox1_TextChanged(System.Windows.Forms.TextBox sender, EventArgs e)
-        {
-            string text=sender.Text;
         }
     }
 }
