@@ -136,6 +136,13 @@ namespace UI_Library
             txtBoxY.Visible = false;
             txtBoxZ.Visible = false;
 
+            arrowDown.Visible = false;
+            arrowUp.Visible = false;
+
+            checkedListBoxPoints.Visible = false;
+
+            addButton.Visible = false;
+
             butOk.Visible = false;
             butCancel.Visible = false;
         }
@@ -176,6 +183,13 @@ namespace UI_Library
             txtBoxY.Visible = false;
             txtBoxZ.Visible = false;
 
+            arrowDown.Visible = false;
+            arrowUp.Visible = false;
+
+            checkedListBoxPoints.Visible = false;
+
+            addButton.Visible = false;
+
             butOk.Visible = false;
             butCancel.Visible = false;
         }
@@ -192,8 +206,29 @@ namespace UI_Library
             txtBoxY.Visible = true;
             txtBoxZ.Visible = true;
 
+            arrowDown.Visible = true;
+            arrowUp.Visible = true;
+
+            checkedListBoxPoints.Visible = true;
+
+            addButton.Visible = true;
+
             butOk.Visible = true;
             butCancel.Visible = true;
+        }
+
+        private void addButton_Click(object sender, EventArgs e)
+        {
+            float X, Y, Z;
+            try
+            {
+                X = float.Parse(lblX.Text);
+                lblX.BackColor = System.Drawing.Color.White;
+            }
+            catch
+            {
+                lblX.BackColor = System.Drawing.Color.White;
+            }
         }
     }
 }

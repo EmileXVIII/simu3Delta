@@ -71,6 +71,9 @@
     <Compile Include="Code\CrashObject\CrashObject.cs" />
     <Compile Include="Code\Exceptions\NoApplicationPointException.cs" />
     <Compile Include="Code\Exceptions\NotInFigureExeption.cs" />
+    <Compile Include="Code\Inputs\IImput.cs" />
+    <Compile Include="Code\Inputs\IntImput.cs" />
+    <Compile Include="Code\Inputs\FloatImput.cs" />
     <Compile Include="Code\Objects\ListWhithPermutations.cs" />
     <Compile Include="Code\Objects\Projector.cs" />
     <Compile Include="Code\Objects\Convertor.cs" />
@@ -201,6 +204,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ressources\tringlex600.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ressources\Arrow-Down-Small.png" />
+    <Content Include="ressources\Arrow-Down.png" />
+    <None Include="ressources\Arrow-Up-Small.png" />
+    <Content Include="ressources\Arrow-Up.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

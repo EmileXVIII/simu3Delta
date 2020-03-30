@@ -13,6 +13,7 @@ using System.Drawing.Printing;
 using UI_Library.Code.RDMengine;
 using System.Windows.Forms.DataVisualization.Charting;
 using UI_Library.Code.Objects;
+using UI_Library.Code.Inputs;
 
 namespace UI_Library
 {
@@ -42,12 +43,20 @@ namespace UI_Library
 
         private void buttonTest_Click(object sender, EventArgs e)
         {
+            string nameFile = textBox3.Text;
             Bitmap myImg = new PictureFromScatterPlot().Convert(5000,5000);
-            myImg.Save(Application.StartupPath + @"\myImg.png");
+            try
+            {
+                myImg.Save(Application.StartupPath + @"\" + nameFile);
+            }
+            catch
+            {
+                throw new Exception("Can't save , try to rename the file");
+            }
             Form frm = new Form();
             frm.Show();
             PictureBox PictureBox2 = new PictureBox();
-            PictureBox2.Image = Image.FromFile(Application.StartupPath+@"\myImg.png");
+            PictureBox2.Image = Image.FromFile(Application.StartupPath+@"\"+nameFile);
             PictureBox2.Show();
             frm.Controls.Add(PictureBox2);
             PictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -89,29 +98,44 @@ namespace UI_Library
         private void button1_Click(object sender, EventArgs e)
         {
 
-            Figure figure = new Figure();
-            figure.Add(new Point2(0, 0));
-            figure.Add(new Point2(2000, 0));
-            RDMengine engine = new RDMengine(figure, 1, 1);
-            Figure results = engine.calculateDeformation(figure[0], figure[1], null, new Screw(new float[] { 0, (float)(-5.0 * Math.Pow(10, -8)), 0, 0, 0, 0 }, figure[0].toVector()), false);
-            show(results);
+            FloatImput imput = new FloatImput(this.textBox2);
+            float strenght = imput.getValue();
+            if(imput.getConvertionStatus())
+            {
+                Figure figure = new Figure();
+                figure.Add(new Point2(0, 0));
+                figure.Add(new Point2(2000, 0));
+                RDMengine engine = new RDMengine(figure, 1, 1);
+                Figure results = engine.calculateDeformation(figure[0], figure[1], null, new Screw(new float[] { 0, strenght, 0, 0, 0, 0 }, figure[0].toVector()), false);
+                show(results);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Figure figure = new Figure();
-            figure.Add(new Point2(0, 0));
-            figure.Add(new Point2(2000, 0));
-            figure.Add(new Point2(2000, 2000));
-            figure.Add(new Point2(0, 2000));
-            RDMengine engine = new RDMengine(figure, 1, 1);
-            Screw screw = new Screw(new float[] { 0, (float)(-5.0 * Math.Pow(10, -6)), 0, 0, 0, 0 }, new Point2(0, 1000).toVector());
-            /*Assert.AreEqual(
-                 engine.getDeformationFunctionY(2000, 1000, 0, (float)(-5.0 * Math.Pow(10, -8)), true, 2).calcY(1000),
-                 engine.getDeformationFunctionY(2000, 1000, 0, (float)(-5.0 * Math.Pow(10, -8)), false, 2).calcY(1000)
-                 );*/
-            Figure results1 = engine.calculateDeformation(figure[0], figure[1], screw, null, true);
-            show(results1);
+            FloatImput imput = new FloatImput(this.textBox1);
+            float strenght = imput.getValue();
+            if (imput.getConvertionStatus())
+            {
+                Figure figure = new Figure();
+                figure.Add(new Point2(0, 0));
+                figure.Add(new Point2(2000, 0));
+                figure.Add(new Point2(2000, 2000));
+                figure.Add(new Point2(0, 2000));
+                RDMengine engine = new RDMengine(figure, 1, 1);
+                Screw screw = new Screw(new float[] { 0, strenght, 0, 0, 0, 0 }, new Point2(0, 1000).toVector());
+                /*Assert.AreEqual(
+                     engine.getDeformationFunctionY(2000, 1000, 0, (float)(-5.0 * Math.Pow(10, -8)), true, 2).calcY(1000),
+                     engine.getDeformationFunctionY(2000, 1000, 0, (float)(-5.0 * Math.Pow(10, -8)), false, 2).calcY(1000)
+                     );*/
+                Figure results1 = engine.calculateDeformation(figure[0], figure[1], screw, null, true);
+                show(results1);
+            }
+        }
+
+        private void textBox1_TextChanged(System.Windows.Forms.TextBox sender, EventArgs e)
+        {
+            string text=sender.Text;
         }
     }
 }
